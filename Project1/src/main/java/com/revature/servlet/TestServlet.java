@@ -3,6 +3,7 @@ package com.revature.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,12 +37,10 @@ public class TestServlet extends HttpServlet
 	{
 		EmployeeDAO dao = new EmployeeDAO();
 		
-		Employee employee = new Employee();
-		employee.setEmployeeId(1);
-		Employee fullEmployee = null;
+		ArrayList<Employee> fullEmployee = null;
 		try 
 		{
-			fullEmployee = dao.selectOne(employee);
+			fullEmployee = dao.selectAll();
 		} 
 		catch (SQLException e) 
 		{
