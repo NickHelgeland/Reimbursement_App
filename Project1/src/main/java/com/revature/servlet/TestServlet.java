@@ -35,9 +35,12 @@ public class TestServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		EmployeeDAO dao = new EmployeeDAO();
-		
+		ObjectMapper mapper = new ObjectMapper();
 		Employee employee = new Employee();
-		employee.setEmployeeId(1);
+		int employeeId = Integer.parseInt(mapper.readValue(request.getParameter("employeeId"), String.class));
+		System.out.println(employeeId);
+		System.out.println(request.getQueryString());
+		employee.setEmployeeId(employeeId);
 		Employee fullEmployee = null;
 		try 
 		{
@@ -47,7 +50,6 @@ public class TestServlet extends HttpServlet
 		{
 			e.printStackTrace();
 		}
-		ObjectMapper mapper = new ObjectMapper();
 		PrintWriter out = response.getWriter();
 		String employeeJSON;
 		employeeJSON = mapper.writeValueAsString(fullEmployee);
