@@ -1,5 +1,5 @@
 $(function() {
-	testPost();
+	testGet();
 });
 
 function get(url) {	
