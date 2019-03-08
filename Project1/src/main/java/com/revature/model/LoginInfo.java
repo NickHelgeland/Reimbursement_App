@@ -5,7 +5,12 @@ public class LoginInfo
 	private String username;
 	
 	private String password;
-	
+		
+	public LoginInfo() 
+	{
+		super();
+	}
+
 	public LoginInfo(String username, String password)
 	{
 		this.username = username;

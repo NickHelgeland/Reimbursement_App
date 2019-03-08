@@ -1,13 +1,14 @@
 $(function() {
-	getEmployee();
-	getEmployeeList();
+//	getEmployee();
+//	getEmployeeList();
+	login();
 });
 
 function get(url, func) {	
 	$.get(url, func);
 }
 
-function post(url, data, func) {	
+function post(url, data, func) {
 	$.post(url, JSON.stringify(data), func);
 }
 
@@ -29,7 +30,7 @@ function login() {
 	url = '/Project1/api/login';
 	data = {
 		"username": "TheDude",
-		"password": "password"
+		"password": "passwor"
 	};
 	post(url, data, (data, status) => {
 		console.log(data);
