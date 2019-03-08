@@ -12,7 +12,7 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		LoginInfo info = new LoginInfo("TheDude","password");
+		LoginInfo info = new LoginInfo("TheDude","passwor");
 		
 		Login login = new Login();
 		
