@@ -30,7 +30,7 @@ public class GetEmployee extends HttpServlet
     }
 
 	/**
-	 * localhost:8080/Project1/api/get-employee
+	 * /Project1/api/get-employee
 	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */

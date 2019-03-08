@@ -31,6 +31,8 @@ public class GetEmployeeList extends HttpServlet
     }
 
 	/**
+	 * /Project1/api/get-employee-list
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
