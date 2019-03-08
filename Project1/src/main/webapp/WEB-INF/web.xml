@@ -20,6 +20,15 @@
     <url-pattern>/TestServlet</url-pattern>
   </servlet-mapping>
   <servlet>
+  <description></description>
+  <servlet-name>LoginServlet</servlet-name>
+  <servlet-class>com.revature.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>LoginServlet</servlet-name>
+  <url-pattern>/api/login</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <description></description>
     <display-name>GetEmployee</display-name>
     <servlet-name>GetEmployee</servlet-name>
