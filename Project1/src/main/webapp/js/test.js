@@ -1,38 +1,35 @@
 $(function() {
-	testGet();
+	getEmployee();
+	getEmployeeList();
 });
 
-function get(url) 
-{	
-	$.get(url, function(data, status) 
-	{
-		console.log(data);
-		document.getElementById("header").innerHTML = data[0].firstName;
-	});
-}
-
-function post(url, data) 
-{	
-	$.post(url, JSON.stringify(data), function(data, status) 
-	{
+function get(url) {	
+	$.get(url, function(data, status) {
 		console.log(data);
 	});
 }
 
-function testGet() 
-{
-	url = '/TestServlet';
-	
+//function post(url, data, func) {	
+//	$.post(url, JSON.stringify(data), function(data, status) {
+//		console.log(data);
+//	});
+//}
+
+function getEmployee() {
+	url = '/Project1/api/get-employee';	
 	get(url);
 }
 
-function testPost() 
-{
-	url = '/TestServlet';
-	data = 
-	{
-		"key1": "hello world"
-	};
-	
-	post(url, data);
+function getEmployeeList() {
+	url = '/Project1/api/get-employee-list';	
+	get(url);
 }
+
+//function testPost() {
+//	url = '/TestServlet';
+//	data = {
+//		"key1": "hello world"
+//	};
+//	
+//	post(url, data);
+//}

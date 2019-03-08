@@ -19,4 +19,24 @@
     <servlet-name>TestServlet</servlet-name>
     <url-pattern>/TestServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetEmployee</display-name>
+    <servlet-name>GetEmployee</servlet-name>
+    <servlet-class>com.revature.servlet.GetEmployee</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetEmployee</servlet-name>
+    <url-pattern>/api/get-employee</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetEmployeeList</display-name>
+    <servlet-name>GetEmployeeList</servlet-name>
+    <servlet-class>com.revature.servlet.GetEmployeeList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetEmployeeList</servlet-name>
+    <url-pattern>/api/get-employee-list</url-pattern>
+  </servlet-mapping>
 </web-app>
