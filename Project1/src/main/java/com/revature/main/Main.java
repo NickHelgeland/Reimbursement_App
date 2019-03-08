@@ -4,30 +4,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.revature.database.EmployeeDAO;
+import com.revature.database.Login;
 import com.revature.model.Employee;
+import com.revature.model.LoginInfo;
 
 public class Main 
 {
 	public static void main(String[] args)
 	{
-		EmployeeDAO dao = new EmployeeDAO();
+		LoginInfo info = new LoginInfo("TheDude","password");
 		
-		Employee employee = new Employee();
+		Login login = new Login();
 		
-		employee.setEmployeeId(1);
-		
-		try 
+		if(login.verify(info))
 		{
-			ArrayList<Employee> list = dao.selectAll();
-			
-			for(Employee e : list)
-			{
-				System.out.println(e.getFirstName() + e.getLastName());
-			}
-		} 
-		catch (SQLException e) 
+			System.out.println("Success!");
+		}
+		else
 		{
-			e.printStackTrace();
+			System.out.println("Failure");
 		}
 	}
 }
