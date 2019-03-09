@@ -1,7 +1,7 @@
 $(function() {
 //	getEmployee();
 //	getEmployeeList();
-	login();
+	button()
 });
 
 function get(url, func) {	
@@ -26,11 +26,17 @@ function getEmployeeList() {
 	});
 }
 
+function button() {
+	$("#button").click(function(){
+		login();
+	}); 
+}
+
 function login() {
 	url = '/Project1/api/login';
 	data = {
 		"username": "TheDude",
-		"password": "passwor"
+		"password": "password"
 	};
 	post(url, data, (data, status) => {
 		console.log(data);
