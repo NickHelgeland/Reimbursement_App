@@ -44,8 +44,12 @@ body {
 .paddTop7_5rem {padding-top: 7.5rem;}
 .paddTop8rem {padding-top: 8rem;}
 
-.bgColorWhite {background-color: white;}
-
 .margBot0 {margin-bottom: 0;}
 
 .paddTop5px {padding-top: 5px;}
+
+.bgColorBlack {background-color: #191919;}
+.bgColorWhite {background-color: #FFFFFF;}
+
+.fontBlack, .fontBlackHover:hover, a.fontBlack:hover, a.fontBlack:focus {color: #191919;}
+.fontWhite, .fontWhiteHover:hover, a.fontWhite:hover, a.fontWhite:focus {color: #FFFFFF;}
