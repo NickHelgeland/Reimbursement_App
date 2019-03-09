@@ -51,3 +51,41 @@ function login() {
 //	
 //	post(url, data);
 //}
+
+(function() {
+	  'use strict';
+	  window.addEventListener('load', function() {
+	    var forms = document.getElementsByClassName('needs-validation');
+	    var validation = Array.prototype.filter.call(forms, function(form) {
+	      form.addEventListener('submit', function(event) {
+	        if (form.checkValidity() === false) {
+	          form.classList.add('was-validated');
+	          event.preventDefault();
+	          event.stopPropagation();
+	        } else {
+	          event.preventDefault();
+	          event.stopPropagation();
+
+	          // get form info
+	          let username = $('#username').val();
+	          let password = $('#password').val();
+
+	          // ajax call
+		      	url = '/Project1/api/login';
+		    	data = {
+		    		"username": username,
+		    		"password": password
+		    	};
+		    	post(url, data, (data, status) => {
+		    		console.log(data);
+		    	});
+
+
+	          // clear the form
+	          form.classList.remove('was-validated');
+	          form.reset();
+	        }
+	      }, false);
+	    });
+	  }, false);
+	})();
