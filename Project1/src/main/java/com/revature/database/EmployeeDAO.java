@@ -13,14 +13,14 @@ public class EmployeeDAO implements Select<Employee>
 	ConnectionFactory connectionFactory = ConnectionFactory.getInstance();
 	
 	@Override
-	public Employee selectOne(Employee object) throws SQLException
+	public Employee selectOne(int id) throws SQLException
 	{	
 		Connection connection = connectionFactory.getConnection();
 		
 		Statement statement = connection.createStatement();
 		
 		ResultSet resultSet = statement.executeQuery
-				("SELECT * FROM EMPLOYEE WHERE EMPLOYEEID=" + "'" + object.getEmployeeId() + "'");
+				("SELECT * FROM EMPLOYEE WHERE EMPLOYEEID=" + "'" + id + "'");
 		
 		Employee employee = new Employee();
 		
@@ -69,5 +69,24 @@ public class EmployeeDAO implements Select<Employee>
 		}
 		
 		return list;
+	}
+	
+	public int selectEmployeeId(String username) throws SQLException
+	{
+		int id = 1;
+		
+		Connection connection = connectionFactory.getConnection();
+		
+		Statement statement = connection.createStatement();
+		
+		ResultSet resultSet = statement.executeQuery("SELECT EMPLOYEEID FROM EMPLOYEE WHERE USERNAME=" 
+				+ "'" + username + "'");
+		
+		while(resultSet.next())
+		{
+			id = resultSet.getInt(1);
+		}
+		
+		return id;
 	}
 }

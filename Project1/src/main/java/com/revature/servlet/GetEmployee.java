@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.database.EmployeeDAO;
@@ -39,14 +40,13 @@ public class GetEmployee extends HttpServlet
 		
 		EmployeeDAO dao = new EmployeeDAO();
 		ObjectMapper mapper = new ObjectMapper();
-		Employee employee = new Employee();
+		HttpSession session = request.getSession();
 
-		employee.setEmployeeId(1);
 		Employee fullEmployee = null;
 		
 		try 
 		{
-			fullEmployee = dao.selectOne(employee);
+			fullEmployee = dao.selectOne((int)session.getAttribute("employeeID"));
 		} 
 		catch (SQLException e) 
 		{

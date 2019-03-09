@@ -39,6 +39,7 @@ function login() {
 		"password": "password"
 	};
 	post(url, data, (data, status) => {
+		$('#mydiv').html(data);
 		console.log(data);
 	});
 }
