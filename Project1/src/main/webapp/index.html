@@ -21,39 +21,45 @@
 	
 	    <!-- local css -->
 	    <link rel="stylesheet" type="text/css" href="/Project1/css/main.css">
-	
-	    <!-- local js -->
 	    	
 	</head>
 	
 	<body>
 	
-		<!-- <h1 id="header">HELLO</h1>
+		<div class="paddTop5px"></div>
 		
-		<a href="home.html" class="btn btn-info" role="button">Link Button</a>
-		
-		<button type="button" class="btn btn-primary" id="button">Log in</button> -->
-		
-		<div class="container bgColorWhite">
-			<form id="loginForm" class="needs-validation" novalidate>
-				<div class="form-row">
-					<div class="col-md-3 mb-3">
-						<label for="username">Username</label>
-						<input type="text" class="form-control" id="username" required>
-						<div class="invalid-feedback">Please provide a username.</div>
+		<div class="container">
+			<div class="container bgColorWhite rounded border border-dark paddTop2rem paddBot4rem">
+			
+				<img src="/Project1/images/cloud9-pic.png" class="mx-auto d-block img-fluid">
+				<h2 class="margBot0 text-center"><b>Tuition Reimbursement Management System</b></h2>
+	
+				<form id="loginForm" class="needs-validation paddTop2rem" novalidate>
+					<div class="form-row">
+						<div class="col-sm-4 offset-sm-4 mb-3">
+							<label for="username">Username</label>
+							<input type="text" class="form-control" id="username" required>
+							<div class="invalid-feedback">Please provide a username.</div>
+						</div>
 					</div>
-				</div>
-				<div class="form-row">
-					<div class="col-md-3 mb-3">
-						<label for="password">Password</label>
-						<input type="password" class="form-control" id="password" required>
-						<div class="invalid-feedback">Please provide a password.</div>
+					<div class="form-row">
+						<div class="col-sm-4 offset-sm-4 mb-3">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" id="password" required>
+							<div class="invalid-feedback">Please provide a password.</div>
+						</div>
 					</div>
-				</div>
-				          
-				<button type="submit" class="btn btn-primary">Log in</button>
-			</form>
+					        
+					<div class="form-row">
+						<div class="col-sm-4 offset-sm-4">
+							<button type="submit" class="btn btn-primary">Log in</button>
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
+		
+		<div id="ourModal"></div>
 
 		<!-- bottom of body js -->
 		<script src="/Project1/js/test.js"></script>

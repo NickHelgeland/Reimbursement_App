@@ -36,15 +36,13 @@ public class TestServlet extends HttpServlet
 	{
 		EmployeeDAO dao = new EmployeeDAO();
 		ObjectMapper mapper = new ObjectMapper();
-		Employee employee = new Employee();
 		int employeeId = Integer.parseInt(mapper.readValue(request.getParameter("employeeId"), String.class));
 		System.out.println(employeeId);
 		System.out.println(request.getQueryString());
-		employee.setEmployeeId(employeeId);
 		Employee fullEmployee = null;
 		try 
 		{
-			fullEmployee = dao.selectOne(employee);
+			fullEmployee = dao.selectOne(employeeId);
 		} 
 		catch (SQLException e) 
 		{

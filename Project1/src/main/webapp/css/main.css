@@ -6,6 +6,46 @@ body {
 	background-color: #0097E3;
 }
 
-.bgColorWhite {
-	background-color: white;
-}
+.paddBot0_25rem {padding-bottom: 0.25rem;}
+.paddBot0_5rem {padding-bottom: 0.5rem;}
+.paddBot0_75rem {padding-bottom: 0.75rem;}
+.paddBot1rem {padding-bottom: 1rem;}
+.paddBot1_5rem {padding-bottom: 1.5rem;}
+.paddBot2rem {padding-bottom: 2rem;}
+.paddBot2_5rem {padding-bottom: 2.5rem;}
+.paddBot3rem {padding-bottom: 3rem;}
+.paddBot3_5rem {padding-bottom: 3.5rem;}
+.paddBot4rem {padding-bottom: 4rem;}
+.paddBot4_5rem {padding-bottom: 4.5rem;}
+.paddBot5rem {padding-bottom: 5rem;}
+.paddBot5_5rem {padding-bottom: 5.5rem;}
+.paddBot6rem {padding-bottom: 6rem;}
+.paddBot6_5rem {padding-bottom: 6.5rem;}
+.paddBot7rem {padding-bottom: 7rem;}
+.paddBot7_5rem {padding-bottom: 7.5rem;}
+.paddBot8rem {padding-bottom: 8rem;}
+
+.paddTop0_25rem {padding-top: 0.25rem;}
+.paddTop0_5rem {padding-top: 0.5rem;}
+.paddTop0_75rem {padding-top: 0.75rem;}
+.paddTop1rem {padding-top: 1rem;}
+.paddTop1_5rem {padding-top: 1.5rem;}
+.paddTop2rem {padding-top: 2rem;}
+.paddTop2_5rem {padding-top: 2.5rem;}
+.paddTop3rem {padding-top: 3rem;}
+.paddTop3_5rem {padding-top: 3.5rem;}
+.paddTop4rem {padding-top: 4rem;}
+.paddTop4_5rem {padding-top: 4.5rem;}
+.paddTop5rem {padding-top: 5rem;}
+.paddTop5_5rem {padding-top: 5.5rem;}
+.paddTop6rem {padding-top: 6rem;}
+.paddTop6_5rem {padding-top: 6.5rem;}
+.paddTop7rem {padding-top: 7rem;}
+.paddTop7_5rem {padding-top: 7.5rem;}
+.paddTop8rem {padding-top: 8rem;}
+
+.bgColorWhite {background-color: white;}
+
+.margBot0 {margin-bottom: 0;}
+
+.paddTop5px {padding-top: 5px;}
