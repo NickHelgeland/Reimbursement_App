@@ -29,9 +29,8 @@ public class LoginServlet extends HttpServlet
 		
 		if(login.verify(info))
 		{
-			System.out.println("foward");
-			request.getRequestDispatcher("home.html").forward(request, response);
-			System.out.println("test");
+			System.out.println("forward");
+			request.getRequestDispatcher("/home.html").forward(request, response);
 		}
 		else
 		{
