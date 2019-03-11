@@ -58,4 +58,14 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/api/logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CurrentSessionServlet</display-name>
+    <servlet-name>CurrentSessionServlet</servlet-name>
+    <servlet-class>com.revature.servlet.CurrentSessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CurrentSessionServlet</servlet-name>
+    <url-pattern>/api/current-session</url-pattern>
+  </servlet-mapping>
 </web-app>
