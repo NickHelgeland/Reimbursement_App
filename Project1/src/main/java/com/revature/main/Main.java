@@ -5,24 +5,34 @@ import java.util.ArrayList;
 
 import com.revature.database.EmployeeDAO;
 import com.revature.database.Login;
+import com.revature.database.RequestDAO;
 import com.revature.model.Employee;
+import com.revature.model.Event;
+import com.revature.model.GradingFormat;
 import com.revature.model.LoginInfo;
+import com.revature.model.Request;
 
 public class Main 
 {
 	public static void main(String[] args)
 	{
-		LoginInfo info = new LoginInfo("TheDude","passwor");
+		RequestDAO dao = new RequestDAO();
 		
-		Login login = new Login();
+		Employee employee = new Employee();
+		employee.setEmployeeId(2);
 		
-		if(login.verify(info))
+		Event event = new Event();
+		event.setEventId(21);
+		
+		Request request = new Request(1,employee,800,"pending superior approval",event,"because i want to");
+		
+		try 
 		{
-			System.out.println("Success!");
-		}
-		else
+			dao.createNew(request);
+		} 
+		catch (SQLException e) 
 		{
-			System.out.println("Failure");
+			e.printStackTrace();
 		}
 	}
 }

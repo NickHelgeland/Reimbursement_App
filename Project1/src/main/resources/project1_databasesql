@@ -93,4 +93,15 @@ Seeds
 EXECUTE CREATE_EMPLOYEE_PROCEDURE('Nick','Helgeland','3359 state route 36','Jasper','NY',14855,'TheDude','password','0','employee');
 EXECUTE CREATE_EMPLOYEE_PROCEDURE('Garret','Polinski','Reflections','Tampa','FL',33601,'GPolinsky','password','0','employee');
 
+INSERT INTO GRADING_FORMAT VALUES(GRADING_FORMAT_SEQ.NEXTVAL,'A=90,B=80,C=70,D=60,F=50','Grade');
+
+INSERT INTO EVENTS VALUES(EVENTID_SEQ.NEXTVAL,'Class',2,TO_DATE('2019/01/14','yyyy/mm/dd'),TO_DATE('1029/01/23','yyyy/mm/dd'),
+'USF','Programming class','ongoing');
+
+INSERT INTO EVENTS VALUES(EVENTID_SEQ.NEXTVAL,'Class',2,TO_DATE('2019/01/23','yyyy/mm/dd'),TO_DATE('1029/02/15','yyyy/mm/dd'),
+'USF','Elective','ongoing');
+
+INSERT INTO REQUESTS VALUES(REQUESTID_SEQ.NEXTVAL,1,500,'pending supervisor approval',7,'because i want to');
+
+commit;
 
