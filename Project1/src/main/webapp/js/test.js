@@ -32,6 +32,16 @@ function login() {
 	});
 }
 
+function logOff() {
+	url = '/Project1/api/get-employee-list';
+	
+	$('#logOffBtn').click(function() {
+		get(url, (data, status) => {
+			
+		});
+	});
+}
+
 function getEmployee(func) {
 	url = '/Project1/api/get-employee';	
 	get(url, func);
