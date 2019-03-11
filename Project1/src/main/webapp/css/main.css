@@ -3,7 +3,7 @@ body {
 	font-family: 'Work Sans', sans-serif;
 	/* google fonts */
 	
-	background-color: #0097E3;
+	background-color: #191919;
 }
 
 .paddBot0_25rem {padding-bottom: 0.25rem;}
@@ -44,12 +44,22 @@ body {
 .paddTop7_5rem {padding-top: 7.5rem;}
 .paddTop8rem {padding-top: 8rem;}
 
+.paddNavbar {padding-top: 69px;}
+
 .margBot0 {margin-bottom: 0;}
 
 .paddTop5px {padding-top: 5px;}
+.paddBot5px {padding-bottom: 5px;}
 
 .bgColorBlack {background-color: #191919;}
 .bgColorWhite {background-color: #FFFFFF;}
+.bgColorGray {background-color: #282828;}
+.bgColorBlue {background-color: #0097E3;}
 
 .fontBlack, .fontBlackHover:hover, a.fontBlack:hover, a.fontBlack:focus {color: #191919;}
 .fontWhite, .fontWhiteHover:hover, a.fontWhite:hover, a.fontWhite:focus {color: #FFFFFF;}
+.fontBlue, .fontBlueHover:hover, a.fontBlue:hover, a.fontBlue:focus {color: #0097E3;}
+
+@media (max-width: 991px) {
+	.paddNavbar {padding-top: 56px;}
+}
