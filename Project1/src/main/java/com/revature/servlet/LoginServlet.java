@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet
 			try 
 			{
 				session.setAttribute("employeeID", dao.selectEmployeeId(info.getUsername()));
+				session.setAttribute("type", dao.selectOne((int)session.getAttribute("employeeID")).getEmployeeType());
 			} 
 			catch (SQLException e) 
 			{
