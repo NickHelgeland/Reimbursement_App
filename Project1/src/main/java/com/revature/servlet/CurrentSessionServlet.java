@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 /**
  * Servlet implementation class CurrentSessionServlet
  */
@@ -33,9 +35,15 @@ public class CurrentSessionServlet extends HttpServlet {
 		{
 			validSession = true;
 		}
-		PrintWriter writer = response.getWriter();
-		writer.print(validSession);
-		writer.close();
+		
+		ObjectMapper mapper = new ObjectMapper();		
+		PrintWriter out = response.getWriter();
+		
+		String employeeJSON = mapper.writeValueAsString(validSession);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		out.print(employeeJSON);
+		out.flush();
 	}
 
 	/**

@@ -1,11 +1,15 @@
 package com.revature.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Servlet implementation class LogoutServlet
@@ -37,6 +41,16 @@ public class LogoutServlet extends HttpServlet
 		{
 			e.printStackTrace();
 		}
+		
+		ObjectMapper mapper = new ObjectMapper();		
+		PrintWriter out = response.getWriter();
+		String output = "logged off";
+		
+		String employeeJSON = mapper.writeValueAsString(output);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		out.print(employeeJSON);
+		out.flush();
 		
 	}
 

@@ -1,7 +1,7 @@
 $(function() {
 	$('#navbar').html(aaa);
 	$('#footer').load('/Project1/html/footer.html');
-	logOff();
+	logOffBtn();
 	displayEmployee();
 });
 

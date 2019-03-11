@@ -1,3 +1,4 @@
+// get/post calls
 function get(url, func) {	
 	$.get(url, func);
 }
@@ -6,45 +7,39 @@ function post(url, data, func) {
 	$.post(url, JSON.stringify(data), func);
 }
 
-function getEmployeeList() {
-	url = '/Project1/api/get-employee-list';	
-	get(url, (data, status) => {
-		console.log(data);
-	});
-}
-
-function login() {
-	let username = $('#username').val();
-	let password = $('#password').val();
-
-	let url = '/Project1/api/login';
-	let data = {
-		"username": username,
-		"password": password
-	};
-	
-	post(url, data, (data, status) => {
-		if (data == "") {
-			window.location.href = "/Project1/home";
-		} else {
-			modal("Failure", data);
-		}
-	});
-}
-
-function logOff() {
-	url = '/Project1/api/get-employee-list';
-	
-	$('#logOffBtn').click(function() {
-		get(url, (data, status) => {
-			
-		});
-	});
-}
-
+// api calls
 function getEmployee(func) {
 	url = '/Project1/api/get-employee';	
 	get(url, func);
+}
+
+function logOff() {
+	url = '/Project1/api/logout';
+	get(url, (data, status) => {});
+}
+
+function currentSession(func) {
+	url = '/Project1/api/current-session';
+	get(url, func);
+}
+
+function getEmployeeList(func) {
+	url = '/Project1/api/get-employee-list';	
+	get(url, func);
+}
+
+function login(data, func) {
+	let url = '/Project1/api/login';	
+	post(url, data, func);
+}
+
+// app wide functions
+function logOffBtn() {	
+	$('#logOffBtn').click(function() {
+		logOff();		
+		alert("You have logged off.");
+		window.location.href = "/Project1";
+	});
 }
 
 (function() {
@@ -65,7 +60,7 @@ function getEmployee(func) {
 					var whatForm = $('.needs-validation');
 					
 					if (whatForm.is('#loginForm')) {
-						login();
+						loginForm();
 					}					
 					
 					// clear the form
