@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.database.RequestDAO;
 import com.revature.model.Request;
-import com.revature.model.Status;
 
 /**
  * Servlet implementation class RequestByStatusServlet
@@ -37,26 +36,30 @@ public class RequestByStatusServlet extends HttpServlet
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
 		RequestDAO requestDAO = new RequestDAO();
 		ObjectMapper mapper = new ObjectMapper();
 		HttpSession session = request.getSession();
 		
-		Status status = null;
+		String status = "";
 		ArrayList<Request> requestList = null;
 		
-		status = mapper.readValue(request.getInputStream(), Status.class);
+		if(session.getAttribute("type").toString().equals("superior"))
+		{
+			status = "pending superior approval";
+		}
+		else if(session.getAttribute("type").toString().equals("head"))
+		{
+			status = "pending head approval";
+		}
+		else if(session.getAttribute("type").toString().equals("bc"))
+		{
+			status = "pending final approval";
+		}
+		
 		
 		try 
 		{
-			requestList = requestDAO.selectPendingApproval(status.getStatus(), 
+			requestList = requestDAO.selectPendingApproval(status, 
 					(int)session.getAttribute("employeeID"));
 		} 
 		catch (SQLException e) 
@@ -71,5 +74,13 @@ public class RequestByStatusServlet extends HttpServlet
 		response.setCharacterEncoding("UTF-8");
 		out.print(requestJSON);
 		out.flush();
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		doGet(request,response);
 	}
 }
