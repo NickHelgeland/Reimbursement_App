@@ -68,4 +68,44 @@
     <servlet-name>CurrentSessionServlet</servlet-name>
     <url-pattern>/api/current-session</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetRequestServlet</display-name>
+    <servlet-name>GetRequestServlet</servlet-name>
+    <servlet-class>com.revature.servlet.GetRequestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetRequestServlet</servlet-name>
+    <url-pattern>/api/get-request</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetAllRequestsServlet</display-name>
+    <servlet-name>GetAllRequestsServlet</servlet-name>
+    <servlet-class>com.revature.servlet.GetAllRequestsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAllRequestsServlet</servlet-name>
+    <url-pattern>/api/get-all-requests</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateRequestServlet</display-name>
+    <servlet-name>CreateRequestServlet</servlet-name>
+    <servlet-class>com.revature.model.CreateRequestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateRequestServlet</servlet-name>
+    <url-pattern>/api/create-request</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateRequestServlet</display-name>
+    <servlet-name>UpdateRequestServlet</servlet-name>
+    <servlet-class>com.revature.servlet.UpdateRequestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateRequestServlet</servlet-name>
+    <url-pattern>/api/update-request</url-pattern>
+  </servlet-mapping>
 </web-app>

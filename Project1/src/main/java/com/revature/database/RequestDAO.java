@@ -15,7 +15,7 @@ public class RequestDAO implements Insert<Request>, Update<Request>, Select<Requ
 	
 	private EmployeeDAO employeeDAO = new EmployeeDAO();
 	
-	//EventDAO eventDAO = new EventDAO();
+	EventDAO eventDAO = new EventDAO();
 	
 	@Override
 	public void sendUpdate(Request object) throws SQLException
@@ -99,7 +99,7 @@ public class RequestDAO implements Insert<Request>, Update<Request>, Select<Requ
 			request.setEmployee(employeeDAO.selectOne(resultSet.getInt(2)));
 			request.setAmount(resultSet.getDouble(3));
 			request.setStatus(resultSet.getString(4));
-			//request.setEvent(eventDAO.selectOne(resultSet.getInt(5)));
+			request.setEvent(eventDAO.selectOne(resultSet.getInt(5)));
 			request.setJustification(resultSet.getString(6));
 		}
 		
@@ -126,7 +126,35 @@ public class RequestDAO implements Insert<Request>, Update<Request>, Select<Requ
 			request.setEmployee(employeeDAO.selectOne(resultSet.getInt(2)));
 			request.setAmount(resultSet.getDouble(3));
 			request.setStatus(resultSet.getString(4));
-			//request.setEvent(eventDAO.selectOne(resultSet.getInt(5)));
+			request.setEvent(eventDAO.selectOne(resultSet.getInt(5)));
+			request.setJustification(resultSet.getString(6));
+			
+			list.add(request);
+		}
+		
+		return list;
+	}
+	
+	public ArrayList<Request> selectByEmployeeId(int id) throws SQLException
+	{
+		ArrayList<Request> list = new ArrayList<Request>();
+		
+		Connection connection = factory.getConnection();
+		
+		Statement statement = connection.createStatement();
+		
+		ResultSet resultSet = statement.executeQuery("SELECT * FROM REQUESTS WHERE EMPLOYEEID=" 
+				+ "'" + id + "'");
+		
+		while(resultSet.next())
+		{
+			Request request = new Request();
+			
+			request.setRequestID(resultSet.getInt(1));
+			request.setEmployee(employeeDAO.selectOne(resultSet.getInt(2)));
+			request.setAmount(resultSet.getDouble(3));
+			request.setStatus(resultSet.getString(4));
+			request.setEvent(eventDAO.selectOne(resultSet.getInt(5)));
 			request.setJustification(resultSet.getString(6));
 			
 			list.add(request);
