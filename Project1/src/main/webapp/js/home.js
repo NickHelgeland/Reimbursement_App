@@ -1,13 +1,10 @@
 $(function() {
-	$('#navbar').html(navbar());
-	$('#footer').load('/Project1/html/footer.html');
-	logOffBtn();
+	loggedInFunctions();	
 	displayEmployee();
 });
 
 function displayEmployee() {
 	getEmployee((data, status) => {
-		console.log(data);
 		$('#employeeId').html(data.employeeId);
 		$('#firstName').html(data.firstName);
 		$('#lastName').html(data.lastName);
