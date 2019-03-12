@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.revature.model.Employee;
 import com.revature.model.Request;
 
 public class RequestDAO implements Insert<Request>, Update<Request>, Select<Request>
@@ -160,6 +161,39 @@ public class RequestDAO implements Insert<Request>, Update<Request>, Select<Requ
 			list.add(request);
 		}
 		
+		return list;
+	}
+	
+	public ArrayList<Request> selectPendingApproval(String status, int id) throws SQLException
+	{
+		ArrayList<Request> list = new ArrayList<Request>();
+		
+		EmployeeDAO dao = new EmployeeDAO();
+		ArrayList<Employee> subordinates = dao.getAllSubordinates(id, new ArrayList<Employee>());
+		
+		Connection connection = factory.getConnection();
+		
+		Statement statement = connection.createStatement();
+		
+		for(Employee employee : subordinates)
+		{
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM REQUESTS WHERE EMPLOYEEID=" 
+					+ "'" + employee.getEmployeeId() + "' AND STATUS=" + "'" + status + "'");
+			
+			while(resultSet.next())
+			{
+				Request request = new Request();
+				
+				request.setRequestID(resultSet.getInt(1));
+				request.setEmployee(employeeDAO.selectOne(resultSet.getInt(2)));
+				request.setAmount(resultSet.getDouble(3));
+				request.setStatus(resultSet.getString(4));
+				request.setEvent(eventDAO.selectOne(resultSet.getInt(5)));
+				request.setJustification(resultSet.getString(6));
+				
+				list.add(request);
+			}
+		}
 		return list;
 	}
 

@@ -108,4 +108,24 @@
     <servlet-name>UpdateRequestServlet</servlet-name>
     <url-pattern>/api/update-request</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RequestByStatusServlet</display-name>
+    <servlet-name>RequestByStatusServlet</servlet-name>
+    <servlet-class>com.revature.servlet.RequestByStatusServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RequestByStatusServlet</servlet-name>
+    <url-pattern>/api/request-by-status</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetEmployeeType</display-name>
+    <servlet-name>GetEmployeeType</servlet-name>
+    <servlet-class>com.revature.servlet.GetEmployeeType</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetEmployeeType</servlet-name>
+    <url-pattern>/api/get-type</url-pattern>
+  </servlet-mapping>
 </web-app>
