@@ -14,13 +14,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * Servlet implementation class GetEmployeeType
  */
-public class GetEmployeeType extends HttpServlet {
+public class GetEmployeeType extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetEmployeeType() {
+    public GetEmployeeType() 
+    {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,8 +48,8 @@ public class GetEmployeeType extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		doGet(request, response);
 	}
 

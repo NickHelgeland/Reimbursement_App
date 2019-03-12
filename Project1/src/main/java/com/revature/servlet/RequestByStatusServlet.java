@@ -14,17 +14,20 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.database.RequestDAO;
 import com.revature.model.Request;
+import com.revature.model.Status;
 
 /**
  * Servlet implementation class RequestByStatusServlet
  */
-public class RequestByStatusServlet extends HttpServlet {
+public class RequestByStatusServlet extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RequestByStatusServlet() {
+    public RequestByStatusServlet() 
+    {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,14 +49,14 @@ public class RequestByStatusServlet extends HttpServlet {
 		ObjectMapper mapper = new ObjectMapper();
 		HttpSession session = request.getSession();
 		
-		String status = "";
+		Status status = null;
 		ArrayList<Request> requestList = null;
 		
-		status = mapper.readValue(request.getInputStream(), String.class);
+		status = mapper.readValue(request.getInputStream(), Status.class);
 		
 		try 
 		{
-			requestList = requestDAO.selectPendingApproval(status, 
+			requestList = requestDAO.selectPendingApproval(status.getStatus(), 
 					(int)session.getAttribute("employeeID"));
 		} 
 		catch (SQLException e) 
@@ -69,5 +72,4 @@ public class RequestByStatusServlet extends HttpServlet {
 		out.print(requestJSON);
 		out.flush();
 	}
-
 }
