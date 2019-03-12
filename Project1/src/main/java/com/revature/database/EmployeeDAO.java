@@ -34,6 +34,7 @@ public class EmployeeDAO implements Select<Employee>
 			employee.setStateName(resultSet.getString(6));
 			employee.setZipCode(resultSet.getInt(7));
 			employee.setUsername(resultSet.getString(8));
+			employee.setSupervisorId(resultSet.getInt(9));
 			employee.setEmployeeType(resultSet.getString(10));
 		}
 		
@@ -63,6 +64,7 @@ public class EmployeeDAO implements Select<Employee>
 			employee.setStateName(resultSet.getString(6));
 			employee.setZipCode(resultSet.getInt(7));
 			employee.setUsername(resultSet.getString(8));
+			employee.setSupervisorId(resultSet.getInt(9));
 			employee.setEmployeeType(resultSet.getString(10));
 			
 			list.add(employee);
@@ -111,6 +113,7 @@ public class EmployeeDAO implements Select<Employee>
 			employee.setStateName(resultSet.getString(6));
 			employee.setZipCode(resultSet.getInt(7));
 			employee.setUsername(resultSet.getString(8));
+			employee.setSupervisorId(resultSet.getInt(9));
 			employee.setEmployeeType(resultSet.getString(10));
 			
 			list.add(employee);

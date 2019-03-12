@@ -1,4 +1,4 @@
-package com.revature.model;
+package com.revature.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.database.RequestDAO;
+import com.revature.model.Request;
 
 /**
  * Servlet implementation class CreateRequestServlet
