@@ -118,12 +118,12 @@ function navbar() {
 		text += '		<div class="collapse navbar-collapse" id="collapsibleNavbar">';
 		text += '			<ul class="navbar-nav mr-auto">';
 		text += '				<li class="nav-item">';
-		text += '					<a class="nav-link" href="/create-request">CREATE REQUEST</a>';
+		text += '					<a class="nav-link" href="/Project1/create-request">CREATE REQUEST</a>';
 		text += '				</li>';
 		
 		if (data != 'employee') {
 			text += '			<li class="nav-item">';
-			text += '				<a class="nav-link" href="/view-requests">VIEW REQUESTS</a>';
+			text += '				<a class="nav-link" href="/Project1/view-requests">VIEW REQUESTS</a>';
 			text += '			</li>';
 		}
 		
