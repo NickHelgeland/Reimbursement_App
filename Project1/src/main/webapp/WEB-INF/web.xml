@@ -128,4 +128,44 @@
     <servlet-name>GetEmployeeType</servlet-name>
     <url-pattern>/api/get-type</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetEventServlet</display-name>
+    <servlet-name>GetEventServlet</servlet-name>
+    <servlet-class>com.revature.servlet.GetEventServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetEventServlet</servlet-name>
+    <url-pattern>/api/get-event</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateGradingFormatServlet</display-name>
+    <servlet-name>CreateGradingFormatServlet</servlet-name>
+    <servlet-class>com.revature.servlet.CreateGradingFormatServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateGradingFormatServlet</servlet-name>
+    <url-pattern>/CreateGradingFormatServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateEventServlet</display-name>
+    <servlet-name>CreateEventServlet</servlet-name>
+    <servlet-class>com.revature.servlet.CreateEventServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateEventServlet</servlet-name>
+    <url-pattern>/api/create-event</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetAllFormatsServlet</display-name>
+    <servlet-name>GetAllFormatsServlet</servlet-name>
+    <servlet-class>com.revature.servlet.GetAllFormatsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAllFormatsServlet</servlet-name>
+    <url-pattern>/api/get-all-formats</url-pattern>
+  </servlet-mapping>
 </web-app>
