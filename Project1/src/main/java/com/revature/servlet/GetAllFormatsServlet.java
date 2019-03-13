@@ -36,19 +36,23 @@ public class GetAllFormatsServlet extends HttpServlet {
 		GradingFormatDAO gDAO = new GradingFormatDAO();
 		ObjectMapper mapper = new ObjectMapper();
 		ArrayList<GradingFormat> formatList = null;
+		ArrayList<String> scaleList = new ArrayList<String>();
 		
 		try 
 		{
 			formatList = gDAO.selectAll();
+			for(GradingFormat format : formatList)
+			{
+				scaleList.add(format.getGradingScale());
+			}
 		} 
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
-			formatList = new ArrayList<GradingFormat>();
 		}
 		
 		PrintWriter out = response.getWriter();
-		String formatJSON = mapper.writeValueAsString(formatList);
+		String formatJSON = mapper.writeValueAsString(scaleList);
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		out.print(formatJSON);
