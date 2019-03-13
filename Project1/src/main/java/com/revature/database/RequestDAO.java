@@ -90,7 +90,7 @@ public class RequestDAO implements Insert<Request>, Update<Request>, Select<Requ
 		Statement statement = connection.createStatement();
 		
 		ResultSet resultSet = statement.executeQuery
-				("SELECT * FROM REQUEST WHERE REQUESTID=" + "'" + id + "'");
+				("SELECT * FROM REQUESTS WHERE REQUESTID=" + "'" + id + "'");
 		
 		Request request = new Request();
 		

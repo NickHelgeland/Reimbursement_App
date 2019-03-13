@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.revature.database.EmployeeDAO;
+import com.revature.database.EventDAO;
 import com.revature.database.Login;
 import com.revature.database.RequestDAO;
 import com.revature.model.Employee;
@@ -26,16 +27,17 @@ public class Main
 		Event event = new Event();
 		event.setEventId(21);
 		
+		EventDAO eventDAO = new EventDAO();
+		
+		RequestDAO requestDAO = new RequestDAO();
+		
 		//Request request = new Request(1,employee,800,"pending superior approval",event,"because i want to");
 		
 		try 
 		{
-			ArrayList<Employee> list = edao.getAllSubordinates(21, new ArrayList<Employee>());
+			Event newEvent = eventDAO.selectOne(requestDAO.selectOne(41).getEvent().getEventId());
 			
-			for(Employee e : list)
-			{
-				System.out.println(e.getFirstName() + e.getLastName());
-			}
+			System.out.println(newEvent.getEventLocation() + " " + newEvent.getEventDescription());
 		} 
 		catch (SQLException e) 
 		{
