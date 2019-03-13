@@ -57,7 +57,7 @@ public class ApproveOrDenayServlet extends HttpServlet
 			newRequest = requestDAO.selectOne(approveOrDeny.getId());
 			if(approveOrDeny.isApproved())
 			{
-				if(session.getAttribute("type").toString().equals("superior"))
+				if(session.getAttribute("type").toString().equals("supervisor"))
 				{
 					newRequest.setStatus("pending head approval");
 				}

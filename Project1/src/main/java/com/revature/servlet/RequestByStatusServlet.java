@@ -43,9 +43,9 @@ public class RequestByStatusServlet extends HttpServlet
 		String status = "";
 		ArrayList<Request> requestList = null;
 		
-		if(session.getAttribute("type").toString().equals("superior"))
+		if(session.getAttribute("type").toString().equals("supervisor"))
 		{
-			status = "pending superior approval";
+			status = "pending supervisor approval";
 		}
 		else if(session.getAttribute("type").toString().equals("head"))
 		{
