@@ -33,17 +33,51 @@
 		<div class="container-fluid bgColorBlue paddTop5px paddBot5px">
 			<div class="container bgColorWhite fontBlack rounded border border-dark paddTop4rem paddBot4rem">
 			
-				<h1 class="margBot0 paddBot4rem fontBlue text-center"><b>HOME</b></h1>
+				<h1 class="margBot0 paddBot4rem fontBlue text-center"><b>CREATE REQUEST</b></h1>
 			
-				<h3><b>EMPLOYEE INFORMATION</b></h3>
-				<h6>Employee ID: <span id="employeeId"></span></h6>
-				<h6>First Name: <span id="firstName"></span></h6>
-				<h6>Last Name: <span id="lastName"></span></h6>
-				<h6>Street Address: <span id="streetAddress"></span></h6>
-				<h6>City: <span id="city"></span></h6>
-				<h6>State: <span id="stateName"></span></h6>
-				<h6>Supervisor ID: <span id="supervisorId"></span></h6>
-				<h6 class="margBot0">Employee Type: <span id="employeeType"></span></h6>
+				<form id="requestForm" class="needs-validation" novalidate>
+				
+					<div class="form-row">
+						<div class="col-md-6 mb-3">
+							<label for="eventType">Event Type</label>
+							<input type="text" class="form-control" id="eventType" required>
+							<div class="invalid-feedback">Please provide a valid event type.</div>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="gradingFormatID">Grading Format ID</label>
+							<input type="text" class="form-control" id="gradingFormatID" required>
+							<div class="invalid-feedback">Please provide a valid grading format ID.</div>
+						</div>
+					</div>
+					
+					<div class="form-row">
+						<div class="col-md-6 mb-3">
+							<label for="startDate">Start Date</label>
+							<input type="date" class="form-control" id="startDate" required>
+							<div class="invalid-feedback">Please provide a valid start date.</div>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="endDate">End Date</label>
+							<input type="date" class="form-control" id="endDate" required>
+							<div class="invalid-feedback">Please provide a valid end date.</div>
+						</div>
+					</div>
+					
+					<div class="form-row">
+						<div class="col-md-6 mb-3">
+							<label for="eventLocation">Event Location</label>
+							<input type="text" class="form-control" id="eventLocation" required>
+							<div class="invalid-feedback">Please provide a event location.</div>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="eventDescription">Event Description</label>
+							<input type="text" class="form-control" id="eventDescription" required>
+							<div class="invalid-feedback">Please provide a valid event description.</div>
+						</div>
+					</div>
+					
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
 				
 			</div>
 		</div>
@@ -54,7 +88,7 @@
 
 		<!-- bottom of body js -->
 		<script src="/Project1/js/main.js"></script>
-		<script src="/Project1/js/home.js"></script>
+		<script src="/Project1/js/create-request.js"></script>
 	
 	</body>
 	
