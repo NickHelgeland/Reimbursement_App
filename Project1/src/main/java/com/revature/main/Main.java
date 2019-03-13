@@ -35,9 +35,12 @@ public class Main
 		
 		try 
 		{
-			Event newEvent = eventDAO.selectOne(requestDAO.selectOne(41).getEvent().getEventId());
+			ArrayList<Request> list = requestDAO.selectPendingApproval("pending supervisor approval", 22);
 			
-			System.out.println(newEvent.getEventLocation() + " " + newEvent.getEventDescription());
+			for(Request e : list)
+			{
+				System.out.println(e.getAmount() + e.getStatus());
+			}
 		} 
 		catch (SQLException e) 
 		{
