@@ -188,4 +188,14 @@
     <servlet-name>GetRequestByEmployeeIDServlet</servlet-name>
     <url-pattern>/api/request-by-employee-id</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ApproveOrDenayServlet</display-name>
+    <servlet-name>ApproveOrDenayServlet</servlet-name>
+    <servlet-class>com.revature.servlet.ApproveOrDenayServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ApproveOrDenayServlet</servlet-name>
+    <url-pattern>/api/approve-or-deny</url-pattern>
+  </servlet-mapping>
 </web-app>
