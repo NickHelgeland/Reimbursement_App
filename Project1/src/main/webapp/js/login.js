@@ -13,5 +13,5 @@ function loginForm() {
 		} else {
 			modal("Failure", data);
 		}
-	})
+	});
 }

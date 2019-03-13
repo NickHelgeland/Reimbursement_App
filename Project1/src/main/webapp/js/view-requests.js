@@ -3,8 +3,6 @@ $(function() {
 
 	requestByStatusServlet((data, status) => {
 		table(data);
-		
-		console.log(data);
 	});
 });
 
@@ -24,11 +22,19 @@ function table(data) {
 	
 	$('#bodyTable').append(trHTML);
 	
-	$('.viewEmployee').click(function(){
+	$('.viewEmployee').click(function() {
 		console.log($(this).closest("tr").find(".requestID").text());
 	});
 	
-	$('.viewEvent').click(function(){
-		console.log($(this).closest("tr").find(".requestID").text());
+	$('.viewEvent').click(function() {
+		let requestID = $(this).closest("tr").find(".requestID").text();
+	
+		let data = {
+			"id": requestID
+		};
+		
+		getEventServlet(data, (data, status) => {
+			console.log(data);
+		});
 	});
 }
