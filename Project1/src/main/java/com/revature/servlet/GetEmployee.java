@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.database.EmployeeDAO;
+import com.revature.database.RequestDAO;
 import com.revature.model.Employee;
 import com.revature.model.ID;
 
@@ -68,6 +69,7 @@ public class GetEmployee extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		EmployeeDAO employeeDAO = new EmployeeDAO();
+		RequestDAO requestDAO = new RequestDAO();
 		ObjectMapper mapper = new ObjectMapper();
 		Employee employee = null;
 		
@@ -75,7 +77,7 @@ public class GetEmployee extends HttpServlet
 		
 		try 
 		{
-			employee = employeeDAO.selectOne(id.getId());
+			employee = employeeDAO.selectOne(requestDAO.selectOne(id.getId()).getEmployee().getEmployeeId());
 		} 
 		catch (SQLException e) 
 		{
