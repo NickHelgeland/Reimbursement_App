@@ -1,10 +1,14 @@
 $(function() {
 	loggedInFunctions();
+	updateTable();
+});
 
+function updateTable() {
+	$('#myTableId tbody').empty();
 	requestByStatusServlet((data, status) => {
 		table(data);
 	});
-});
+}
 
 function table(data) {
 	let trHTML = '';
@@ -73,10 +77,34 @@ function table(data) {
 	});
 	
 	$('.approve').click(function() {
-		console.log($(this).closest("tr").find(".requestID").text());
+		let requestID = $(this).closest("tr").find(".requestID").text();
+		
+		let data = {
+			"approved": true,
+			"id": requestID
+		};
+		
+		approveOrDenayServlet(data, (data, status) => {
+			let text = 'Request ' + requestID + ' was approved!';
+			
+			modal("Approved", text);
+			updateTable();
+		});
 	});
 	
 	$('.deny').click(function() {
-		console.log($(this).closest("tr").find(".requestID").text());
+		let requestID = $(this).closest("tr").find(".requestID").text();
+		
+		let data = {
+			"approved": false,
+			"id": requestID
+		};
+		
+		approveOrDenayServlet(data, (data, status) => {
+			let text = 'Request ' + requestID + ' was denied!';
+			
+			modal("Denied", text);
+			updateTable();
+		});
 	});
 }

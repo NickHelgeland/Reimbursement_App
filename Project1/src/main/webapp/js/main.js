@@ -18,6 +18,11 @@ function getEmployeePost(data, func) {
 	post(url, data, func);
 }
 
+function approveOrDenayServlet(data, func) {
+	url = '/Project1/api/approve-or-deny';	
+	post(url, data, func);
+}
+
 function logOff() {
 	url = '/Project1/api/logout';
 	get(url, (data, status) => {});
