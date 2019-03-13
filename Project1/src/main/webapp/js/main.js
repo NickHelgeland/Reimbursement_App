@@ -13,6 +13,11 @@ function getEmployee(func) {
 	get(url, func);
 }
 
+function getEmployeePost(data, func) {
+	url = '/Project1/api/get-employee';	
+	post(url, data, func);
+}
+
 function logOff() {
 	url = '/Project1/api/logout';
 	get(url, (data, status) => {});
