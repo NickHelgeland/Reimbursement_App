@@ -99,14 +99,20 @@ UPDATE EMPLOYEE SET SUPERVISORID=22 WHERE EMPLOYEEID < 5;
 
 INSERT INTO GRADING_FORMAT VALUES(GRADING_FORMAT_SEQ.NEXTVAL,'A=90,B=80,C=70,D=60,F=50','Grade');
 
+INSERT INTO GRADING_FORMAT VALUES(GRADING_FORMAT_SEQ.NEXTVAL,'Attended or not','presentation');
+
 INSERT INTO EVENTS VALUES(EVENTID_SEQ.NEXTVAL,'Class',2,TO_DATE('2019/01/14','yyyy/mm/dd'),TO_DATE('1029/01/23','yyyy/mm/dd'),
 'USF','Programming class','ongoing');
 
 INSERT INTO EVENTS VALUES(EVENTID_SEQ.NEXTVAL,'Class',2,TO_DATE('2019/01/23','yyyy/mm/dd'),TO_DATE('1029/02/15','yyyy/mm/dd'),
 'USF','Elective','Not started');
 
+INSERT INTO EVENTS VALUES(EVENTID_SEQ.NEXTVAL,'Seminar',2,TO_DATE('2019/01/23','yyyy/mm/dd'),TO_DATE('1029/02/15','yyyy/mm/dd'),
+'Stanford','Pega Seminar','Not started');
+
 INSERT INTO REQUESTS VALUES(REQUESTID_SEQ.NEXTVAL,1,500,'pending supervisor approval',7,'because i want to');
 INSERT INTO REQUESTS VALUES(REQUESTID_SEQ.NEXTVAL,1,800,'pending supervisor approval',21,'because i want to');
+INSERT INTO REQUESTS VALUES(REQUESTID_SEQ.NEXTVAL,22,300,'pending supervisor approval',41,'Because.');
 
 commit;
 
