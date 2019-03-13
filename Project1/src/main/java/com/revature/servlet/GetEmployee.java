@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.database.EmployeeDAO;
 import com.revature.model.Employee;
+import com.revature.model.ID;
 
 /**
  * Servlet implementation class GetEmployee
@@ -37,7 +39,6 @@ public class GetEmployee extends HttpServlet
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		
 		EmployeeDAO dao = new EmployeeDAO();
 		ObjectMapper mapper = new ObjectMapper();
 		HttpSession session = request.getSession();
@@ -64,9 +65,29 @@ public class GetEmployee extends HttpServlet
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-//	{
-//
-//	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		EmployeeDAO employeeDAO = new EmployeeDAO();
+		ObjectMapper mapper = new ObjectMapper();
+		Employee employee = null;
+		
+		ID id = mapper.readValue(request.getInputStream(), ID.class);
+		
+		try 
+		{
+			employee = employeeDAO.selectOne(id.getId());
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		PrintWriter out = response.getWriter();
+		String requestJSON = mapper.writeValueAsString(employee);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		out.print(requestJSON);
+		out.flush();
+	}
 
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.database.EventDAO;
+import com.revature.database.RequestDAO;
 import com.revature.model.Event;
 import com.revature.model.ID;
 
@@ -36,13 +37,14 @@ public class GetEventServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		EventDAO eventDAO = new EventDAO();
+		RequestDAO requestDAO = new RequestDAO();
 		ObjectMapper mapper = new ObjectMapper();
 		Event event = null;
 		ID id = mapper.readValue(request.getInputStream(), ID.class);
 		
 		try 
 		{
-			event = eventDAO.selectOne(id.getId());
+			event = eventDAO.selectOne(requestDAO.selectOne(id.getId()).getEvent().getEventId());
 		} 
 		catch (SQLException e) 
 		{
