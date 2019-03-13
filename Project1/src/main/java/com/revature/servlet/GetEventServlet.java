@@ -36,6 +36,14 @@ public class GetEventServlet extends HttpServlet
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		//Do nothing
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		EventDAO eventDAO = new EventDAO();
 		RequestDAO requestDAO = new RequestDAO();
 		ObjectMapper mapper = new ObjectMapper();
@@ -57,14 +65,6 @@ public class GetEventServlet extends HttpServlet
 		response.setCharacterEncoding("UTF-8");
 		out.print(eventJSON);
 		out.flush();
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
-		doGet(request, response);
 	}
 
 }
