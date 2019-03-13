@@ -35,7 +35,21 @@ function table(data) {
 		};
 		
 		getEventServlet(data, (data, status) => {
-			console.log(data);
+			let text = '';
+
+			text += '<h6>Event ID: ' + data.eventId + '</h6>';
+			text += '<h6>Event Type: ' + data.eventType + '</h6>';
+			text += '<h6>Event Start Time: ' + data.eventDate + '</h6>';
+			text += '<h6>Event End Time: ' + data.eventTime + '</h6>';
+			text += '<h6>Event Location: ' + data.eventLocation + '</h6>';
+			text += '<h6>Event Description: ' + data.eventDescription + '</h6>';
+			text += '<h6>Event Status: ' + data.eventStatus + '</h6>';
+			
+			text += '<h6>Grading Format ID: ' + data.gradingFormat.gradingFormatId + '</h6>';
+			text += '<h6>Grading Scale: ' + data.gradingFormat.gradingScale + '</h6>';
+			text += '<h6 class="margBot0">Pass Condition: ' + data.gradingFormat.passCondition + '</h6>';
+			
+			modal("Event Information", text);
 		});
 	});
 	
