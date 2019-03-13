@@ -38,6 +38,11 @@ function login(data, func) {
 	post(url, data, func);
 }
 
+function getEventServlet(data, func) {
+	let url = '/Project1/api/get-event';	
+	post(url, data, func);
+}
+
 function getEmployeeType(func) {
 	url = '/Project1/api/get-type';	
 	get(url, func);
