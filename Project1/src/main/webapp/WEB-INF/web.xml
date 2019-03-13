@@ -130,16 +130,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>GetEventServlet</display-name>
-    <servlet-name>GetEventServlet</servlet-name>
-    <servlet-class>com.revature.servlet.GetEventServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>GetEventServlet</servlet-name>
-    <url-pattern>/api/get-event</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>CreateGradingFormatServlet</display-name>
     <servlet-name>CreateGradingFormatServlet</servlet-name>
     <servlet-class>com.revature.servlet.CreateGradingFormatServlet</servlet-class>
@@ -167,5 +157,35 @@
   <servlet-mapping>
     <servlet-name>GetAllFormatsServlet</servlet-name>
     <url-pattern>/api/get-all-formats</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateEventServlet</display-name>
+    <servlet-name>UpdateEventServlet</servlet-name>
+    <servlet-class>com.revature.servlet.UpdateEventServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateEventServlet</servlet-name>
+    <url-pattern>/api/update-event</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetEventServlet</display-name>
+    <servlet-name>GetEventServlet</servlet-name>
+    <servlet-class>com.revature.servlet.GetEventServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetEventServlet</servlet-name>
+    <url-pattern>/api/get-event</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetRequestByEmployeeIDServlet</display-name>
+    <servlet-name>GetRequestByEmployeeIDServlet</servlet-name>
+    <servlet-class>com.revature.servlet.GetRequestByEmployeeIDServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetRequestByEmployeeIDServlet</servlet-name>
+    <url-pattern>/api/request-by-employee-id</url-pattern>
   </servlet-mapping>
 </web-app>
