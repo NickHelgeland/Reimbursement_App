@@ -33,6 +33,11 @@ function login(data, func) {
 	post(url, data, func);
 }
 
+function getEmployeeType(func) {
+	url = '/Project1/api/get-type';	
+	get(url, func);
+}
+
 // app wide functions
 function logOffBtn() {	
 	$('#logOffBtn').click(function() {
@@ -40,6 +45,11 @@ function logOffBtn() {
 		alert("You have logged off.");
 		window.location.href = "/Project1";
 	});
+}
+
+function loggedInFunctions() {
+	navbar();
+	$('#footer').load('/Project1/html/footer.html');
 }
 
 (function() {
@@ -72,29 +82,65 @@ function logOffBtn() {
 	}, false);
 })();
 
-function modal(heading, body) {
-	
+// reuse html
+function modal(heading, body) {	
 	text = '';
 	
 	text += '<div class="modal fade" id="myModal">';
 	text += '	<div class="modal-dialog modal-dialog-centered">';
 	text += '		<div class="modal-content">';
-
 	text += '			<div class="modal-header">';
 	text += '				<h4 class="modal-title">' + heading + '</h4>';
 	text += '				<button type="button" class="close" data-dismiss="modal">&times;</button>';
 	text += '			</div>';
-
 	text += '			<div class="modal-body">' + body + '</div>';
-
 	text += '			<div class="modal-footer">';
 	text += '				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>';
 	text += '			</div>';
-
 	text += '		</div>';
 	text += '	</div>';
 	text += '</div>';
 		
 	$('#ourModal').html(text);
 	$("#myModal").modal('show');
+}
+
+function navbar() {		
+	getEmployeeType((data, status) => {
+		text = '';
+		
+		text += '<nav class="navbar navbar-expand-lg bgColorBlack navbar-dark fixed-top">';
+		text += '	<div class="container">';
+		text += '		<a class="navbar-brand" href="/Project1/home">CLOUD9 TRMS</a>';
+		text += '		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">';
+		text += '			<span class="navbar-toggler-icon"></span>';
+		text += '		</button>';
+		text += '		<div class="collapse navbar-collapse" id="collapsibleNavbar">';
+		text += '			<ul class="navbar-nav mr-auto">';
+		text += '				<li class="nav-item">';
+		text += '					<a class="nav-link" href="/create-request">CREATE REQUEST</a>';
+		text += '				</li>';
+		
+		if (data != 'employee') {
+			text += '			<li class="nav-item">';
+			text += '				<a class="nav-link" href="/view-requests">VIEW REQUESTS</a>';
+			text += '			</li>';
+		}
+		
+		text += '			</ul>';
+		text += '			<ul class="navbar-nav">';
+		text += '				<li class="nav-item">';
+		text += '					<div class="nav-link">';
+		text += '						<button type="button" class="btn btn-primary" id="logOffBtn">Log Off</button>';
+		text += '					</div>';
+		text += '				</li>';
+		text += '			</ul>';
+		text += '		</div>';
+		text += '	</div>';
+		text += '</nav>';
+		
+		$('#navbar').html(text);
+		
+		logOffBtn();
+	});
 }
