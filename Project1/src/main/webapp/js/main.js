@@ -23,6 +23,11 @@ function currentSession(func) {
 	get(url, func);
 }
 
+function requestByStatusServlet(func) {
+	url ='/Project1/api/request-by-status';
+	get(url, func);
+}
+
 function getEmployeeList(func) {
 	url = '/Project1/api/get-employee-list';	
 	get(url, func);
