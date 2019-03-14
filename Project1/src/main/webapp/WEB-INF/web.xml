@@ -92,7 +92,7 @@
     <description></description>
     <display-name>CreateRequestServlet</display-name>
     <servlet-name>CreateRequestServlet</servlet-name>
-    <servlet-class>com.revature.model.CreateRequestServlet</servlet-class>
+    <servlet-class>com.revature.servlet.CreateRequestServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CreateRequestServlet</servlet-name>

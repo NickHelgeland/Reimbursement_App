@@ -8,6 +8,11 @@ function post(url, data, func) {
 }
 
 // api calls
+function createRequestServlet(data, func) {
+	url = '/Project1/api/create-request';	
+	post(url, data, func);
+}
+
 function completeRequestServlet(data, func) {
 	url = '/Project1/api/complete-request';	
 	post(url, data, func);
@@ -106,7 +111,9 @@ function loggedInFunctions() {
 					
 					if (whatForm.is('#loginForm')) {
 						loginForm();
-					}					
+					} else if (whatForm.is('#requestForm')) {
+						requestForm();
+					}		
 					
 					// clear the form
 					form.classList.remove('was-validated');

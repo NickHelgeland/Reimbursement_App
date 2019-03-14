@@ -14,9 +14,9 @@ public class PartialRequest
 	
 	private double amount;
 	
-	private String Description;
+	private String description;
 	
-	private String Justification;
+	private String justification;
 
 	public PartialRequest(String event_type, String grading_scale, String start_date, String end_date,
 			String event_location, double amount, String description, String justification) 
@@ -28,8 +28,8 @@ public class PartialRequest
 		this.end_date = end_date;
 		this.event_location = event_location;
 		this.amount = amount;
-		Description = description;
-		Justification = justification;
+		this.description = description;
+		this.justification = justification;
 	}
 
 	public PartialRequest() 
@@ -86,19 +86,19 @@ public class PartialRequest
 	}
 
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 
 	public String getJustification() {
-		return Justification;
+		return justification;
 	}
 
 	public void setJustification(String justification) {
-		Justification = justification;
+		this.justification = justification;
 	}
 	
 	
