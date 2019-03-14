@@ -40,12 +40,21 @@
 					<div class="form-row">
 						<div class="col-md-6 mb-3">
 							<label for="eventType">Event Type</label>
-							<input type="text" class="form-control" id="eventType" required>
+							<select class="form-control" id="eventType" required>
+								<option hidden disabled selected value>Select your option</option>
+								<option>University courses</option>
+								<option>Seminars</option>
+								<option>Certification preparation classes</option>
+								<option>Certifications</option>
+								<option>Technical training</option>
+							</select>
 							<div class="invalid-feedback">Please provide a valid event type.</div>
 						</div>
 						<div class="col-md-6 mb-3">
 							<label for="gradingScale">Grading Scale</label>
-							<select class="form-control" id="gradingScale"></select>
+							<select class="form-control" id="gradingScale" required>
+								<option hidden disabled selected value>Select your option</option>
+							</select>
 							<div class="invalid-feedback">Please provide a valid grading scale.</div>
 						</div>
 					</div>
@@ -67,12 +76,25 @@
 						<div class="col-md-6 mb-3">
 							<label for="eventLocation">Event Location</label>
 							<input type="text" class="form-control" id="eventLocation" required>
-							<div class="invalid-feedback">Please provide a event location.</div>
+							<div class="invalid-feedback">Please provide a valid event location.</div>
 						</div>
 						<div class="col-md-6 mb-3">
+							<label for="amount">Amount</label>
+							<input type="text" class="form-control" id="amount" pattern="[0-9]+(\.[0-9][0-9]?)?" required>
+							<div class="invalid-feedback">Please provide a valid amount.</div>
+						</div>
+					</div>
+					
+					<div class="form-row">
+						<div class="col-md-6 mb-3">
 							<label for="eventDescription">Event Description</label>
-							<input type="text" class="form-control" id="eventDescription" required>
+							<textarea class="form-control" id="eventDescription" rows="5" required></textarea>
 							<div class="invalid-feedback">Please provide a valid event description.</div>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="justification">Justification</label>
+							<textarea class="form-control" id="justification" rows="5" required></textarea>
+							<div class="invalid-feedback">Please provide a valid justification.</div>
 						</div>
 					</div>
 					

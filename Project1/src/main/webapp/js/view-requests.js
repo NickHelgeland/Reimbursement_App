@@ -46,7 +46,7 @@ function table(data) {
 			text += '<h6>Supervisor ID: ' + data.supervisorId + '</h6>';
 			text += '<h6 class="margBot0">Employee Type: ' + data.employeeType + '</h6>';
 			
-			modal("Event Information", text);
+			modal("Employee Information", text);
 		});
 	});
 	

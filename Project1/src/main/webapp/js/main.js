@@ -8,8 +8,18 @@ function post(url, data, func) {
 }
 
 // api calls
+function getRequestByEmployeeIDServlet(func) {
+	url = '/Project1/api/request-by-employee-id';	
+	get(url, func);
+}
+
 function getEmployee(func) {
 	url = '/Project1/api/get-employee';	
+	get(url, func);
+}
+
+function getAllFormatsServlet(func) {
+	url = '/Project1/api/get-all-formats';	
 	get(url, func);
 }
 
