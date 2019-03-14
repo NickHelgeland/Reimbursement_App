@@ -8,6 +8,11 @@ function post(url, data, func) {
 }
 
 // api calls
+function completeRequestServlet(data, func) {
+	url = '/Project1/api/complete-request';	
+	post(url, data, func);
+}
+
 function getRequestByEmployeeIDServlet(func) {
 	url = '/Project1/api/request-by-employee-id';	
 	get(url, func);

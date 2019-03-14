@@ -66,22 +66,31 @@ function table(data) {
 		});
 	});
 	
-	$('.complete').click(function() {
-		
-		let status = $(this).closest("tr").find(".status").text();
-		console.log(status);
-		
+	$('.complete').click(function() {		
 		let requestID = $(this).closest("tr").find(".requestID").text();
+		let status = $(this).closest("tr").find(".status").text();
 		
-		let data = {
-			"id": requestID
-		};
-		
-//		approveOrDenayServlet(data, (data, status) => {
-//			let text = 'Request ' + requestID + ' was approved!';
-//			
-//			modal("Approved", text);
-//			updateTable();
-//		});
+		if (status == "pending completion") {
+			let data = {
+				"id": requestID
+			};
+			
+			completeRequestServlet(data, (data, status) => {
+				let text = 'Request completed, waiting for benefit coordination confirmation.';
+				
+				modal("Approved", text);
+				updateTable();
+			});
+		} else if (status == "pending confirmation") {
+			let text = 'Request ' + requestID + ' event is already completed.';
+			
+			modal("Denied", text);
+			updateTable();
+		} else {			
+			let text = 'Request ' + requestID + ' must be approved before you can complete it.';
+			
+			modal("Denied", text);
+			updateTable();
+		}
 	});
 }
