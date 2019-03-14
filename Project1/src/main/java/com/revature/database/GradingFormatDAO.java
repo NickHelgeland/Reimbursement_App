@@ -71,5 +71,16 @@ public class GradingFormatDAO implements Insert<GradingFormat>, Select<GradingFo
 		
 		statement.executeQuery();
 	}
+	
+	public GradingFormat selectByScale(String scale) throws SQLException
+	{
+		Connection connection = factory.getConnection();
+		
+		Statement statement = connection.createStatement();
+		
+		ResultSet resultSet = statement.executeQuery("SELECT * FROM GRADING_FORMAT ");
+		
+		return null;
+	}
 
 }

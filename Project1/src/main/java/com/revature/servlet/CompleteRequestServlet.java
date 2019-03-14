@@ -1,6 +1,7 @@
 package com.revature.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.database.EventDAO;
 import com.revature.database.RequestDAO;
 import com.revature.model.Event;
+import com.revature.model.Request;
 
 /**
  * Servlet implementation class CompleteRequestServlet
@@ -43,18 +45,31 @@ public class CompleteRequestServlet extends HttpServlet {
 		EventDAO eventDAO = new EventDAO();
 		RequestDAO requestDAO = new RequestDAO();
 		ObjectMapper mapper = new ObjectMapper();
+		Request newRequest = null;
+		Event event = null;
 		
-		Event event = mapper.readValue(request.getInputStream(), Event.class);
+		newRequest = mapper.readValue(request.getInputStream(), Request.class);
+		event = newRequest.getEvent();
+		
 		
 		try 
 		{
 			eventDAO.sendUpdate(event);
-			//requestDAO.sendUpdate(object);
+			newRequest.setStatus("pending bc confirmation");
+			requestDAO.sendUpdate(newRequest);
 		} 
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
 		}
+		String message = "Status updated!";
+		
+		PrintWriter out = response.getWriter();
+		String messageJSON = mapper.writeValueAsString(message);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		out.print(messageJSON);
+		out.flush();
 	}
 
 }
