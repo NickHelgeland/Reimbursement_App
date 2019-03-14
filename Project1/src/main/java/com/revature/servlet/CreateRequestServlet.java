@@ -13,9 +13,11 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.database.EmployeeDAO;
 import com.revature.database.EventDAO;
+import com.revature.database.GradingFormatDAO;
 import com.revature.database.RequestDAO;
 import com.revature.model.Employee;
 import com.revature.model.Event;
+import com.revature.model.GradingFormat;
 import com.revature.model.PartialRequest;
 import com.revature.model.Request;
 
@@ -51,6 +53,7 @@ public class CreateRequestServlet extends HttpServlet {
 		RequestDAO requestDAO = new RequestDAO();
 		EventDAO eventDAO = new EventDAO();
 		EmployeeDAO employeeDAO = new EmployeeDAO();
+		GradingFormatDAO gradingDAO = new GradingFormatDAO();
 		ObjectMapper mapper = new ObjectMapper();
 		PartialRequest partialRequest = null;
 		HttpSession session = request.getSession();
@@ -62,13 +65,18 @@ public class CreateRequestServlet extends HttpServlet {
 		event.setEventDescription(partialRequest.getDescription());
 		event.setEventLocation(partialRequest.getEvent_location());
 		event.setEventType(partialRequest.getEvent_type());
+		event.setEventStatus("ongoing");
 		
 		newRequest.setAmount(partialRequest.getAmount());
 		newRequest.setJustification(partialRequest.getJustification());
+		newRequest.setStatus("pending supervisor approval");
 		
 		try 
 		{
+			GradingFormat format = gradingDAO.selectByScale(partialRequest.getGrading_scale());
+			event.setGradingFormat(format);
 			Employee employee = employeeDAO.selectOne((int)session.getAttribute("employeeID"));
+			eventDAO.createNew(event);
 			requestDAO.createNew(newRequest);
 		} 
 		catch (SQLException e) 

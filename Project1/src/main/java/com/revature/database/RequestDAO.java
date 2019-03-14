@@ -196,5 +196,34 @@ public class RequestDAO implements Insert<Request>, Update<Request>, Select<Requ
 		}
 		return list;
 	}
+	
+	public ArrayList<Request> selectPendingBcApproval() throws SQLException
+	{
+		EmployeeDAO dao = new EmployeeDAO();
+		ArrayList<Request> list = new ArrayList<Request>();
+		
+		Connection connection = factory.getConnection();
+		
+		Statement statement = connection.createStatement();
+		
+		ResultSet resultSet = statement.executeQuery("SELECT * FROM REQUESTS WHERE STATUS="
+				+ "'pending final approval' OR STATUS='pending confirmation'");
+		
+		while(resultSet.next())
+		{
+			Request request = new Request();
+			
+			request.setRequestID(resultSet.getInt(1));
+			request.setEmployee(employeeDAO.selectOne(resultSet.getInt(2)));
+			request.setAmount(resultSet.getDouble(3));
+			request.setStatus(resultSet.getString(4));
+			request.setEvent(eventDAO.selectOne(resultSet.getInt(5)));
+			request.setJustification(resultSet.getString(6));
+			
+			list.add(request);
+		}
+		
+		return list;
+	}
 
 }

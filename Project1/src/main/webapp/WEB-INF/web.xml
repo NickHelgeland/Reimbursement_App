@@ -208,4 +208,14 @@
     <servlet-name>CompleteRequestServlet</servlet-name>
     <url-pattern>/api/complete-request</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetBcInfo</display-name>
+    <servlet-name>GetBcInfo</servlet-name>
+    <servlet-class>com.revature.servlet.GetBcInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetBcInfo</servlet-name>
+    <url-pattern>/api/get-bc-info</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -113,6 +113,13 @@ INSERT INTO EVENTS VALUES(EVENTID_SEQ.NEXTVAL,'Seminar',2,TO_DATE('2019/01/23','
 INSERT INTO REQUESTS VALUES(REQUESTID_SEQ.NEXTVAL,1,500,'pending supervisor approval',7,'because i want to');
 INSERT INTO REQUESTS VALUES(REQUESTID_SEQ.NEXTVAL,1,800,'pending supervisor approval',21,'because i want to');
 INSERT INTO REQUESTS VALUES(REQUESTID_SEQ.NEXTVAL,22,300,'pending supervisor approval',41,'Because.');
+INSERT INTO REQUESTS VALUES(REQUESTID_SEQ.NEXTVAL,1,300,'pending completion',41,'Because.');
+
+UPDATE REQUESTS SET STATUS='pending head approval' WHERE REQUESTID=42;
+
+UPDATE REQUESTS SET STATUS='pending supervisor approval' WHERE REQUESTID=21;
+
+UPDATE REQUESTS SET STATUS='pending completion' WHERE REQUESTID=61;
 
 commit;
 
