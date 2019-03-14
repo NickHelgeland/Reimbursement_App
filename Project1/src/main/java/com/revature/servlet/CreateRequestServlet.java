@@ -75,7 +75,10 @@ public class CreateRequestServlet extends HttpServlet {
 		{
 			GradingFormat format = gradingDAO.selectByScale(partialRequest.getGrading_scale());
 			event.setGradingFormat(format);
+			event.setEventId(eventDAO.getNewID());
 			Employee employee = employeeDAO.selectOne((int)session.getAttribute("employeeID"));
+			newRequest.setEmployee(employee);
+			newRequest.setEvent(event);
 			eventDAO.createNew(event);
 			requestDAO.createNew(newRequest);
 		} 

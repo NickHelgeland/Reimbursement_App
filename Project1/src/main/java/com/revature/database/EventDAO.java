@@ -131,16 +131,35 @@ public class EventDAO implements Insert<Event>, Update<Event>, Select<Event>
 		Connection connection = factory.getConnection();
 		
 		PreparedStatement statement = connection.prepareStatement("INSERT INTO EVENTS "
-				+ "VALUES(EVENTID_SEQ.NEXTVAL,?,?,?,?,?,?,?)");
-		statement.setString(1, object.getEventType());
-		statement.setInt(2, object.getGradingFormat().getGradingFormatId());
-		statement.setString(3, object.getEventDate());
-		statement.setString(4, object.getEventTime());
-		statement.setString(5, object.getEventLocation());
-		statement.setString(6, object.getEventDescription());
-		statement.setString(7, object.getEventStatus());
+				+ "VALUES(?,?,?,TO_DATE(?,'yyyy-mm-dd'),TO_DATE(?,'yyyy-mm-dd'),?,?,?)");
+		statement.setInt(1, object.getEventId());
+		statement.setString(2, object.getEventType());
+		statement.setInt(3, object.getGradingFormat().getGradingFormatId());
+		statement.setString(4, object.getEventDate());
+		statement.setString(5, object.getEventTime());
+		statement.setString(6, object.getEventLocation());
+		statement.setString(7, object.getEventDescription());
+		statement.setString(8, object.getEventStatus());
 		
 		statement.executeQuery();
+	}
+	
+	public int getNewID() throws SQLException
+	{
+		Connection connection = factory.getConnection();
+		
+		Statement statement = connection.createStatement();
+		
+		ResultSet resultSet = statement.executeQuery("SELECT EVENTID_SEQ.NEXTVAL FROM DUAL");
+		
+		int id = 0;
+		
+		while(resultSet.next())
+		{
+			id = resultSet.getInt(1);
+		}
+		
+		return id;
 	}
 
 }
