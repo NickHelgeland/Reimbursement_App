@@ -18,6 +18,11 @@ function completeRequestServlet(data, func) {
 	post(url, data, func);
 }
 
+function getBcInfo(func) {
+	url = '/Project1/api/get-bc-info';	
+	get(url, func);
+}
+
 function getRequestByEmployeeIDServlet(func) {
 	url = '/Project1/api/request-by-employee-id';	
 	get(url, func);

@@ -5,8 +5,16 @@ $(function() {
 
 function updateTable() {
 	$('#myTableId tbody').empty();
-	requestByStatusServlet((data, status) => {
-		table(data);
+	getEmployeeType((data, status) => {
+		if (data == "bc") {
+			getBcInfo((data, status) => {
+				table(data);
+			});
+		} else {
+			requestByStatusServlet((data, status) => {
+				table(data);
+			});
+		}
 	});
 }
 
