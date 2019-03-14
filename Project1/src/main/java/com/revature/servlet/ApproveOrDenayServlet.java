@@ -67,7 +67,14 @@ public class ApproveOrDenayServlet extends HttpServlet
 				}
 				else if(session.getAttribute("type").toString().equals("bc"))
 				{
-					newRequest.setStatus("pending completion");
+					if(newRequest.getStatus().equals("pending confirmation"))
+					{
+						newRequest.setStatus("archived");
+					}
+					else
+					{
+						newRequest.setStatus("pending completion");
+					}
 				}
 				message = "approved!";
 			}
