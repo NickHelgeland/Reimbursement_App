@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.database.EventDAO;
 import com.revature.database.RequestDAO;
 import com.revature.model.Event;
+import com.revature.model.ID;
 import com.revature.model.Request;
 
 /**
@@ -48,14 +49,14 @@ public class CompleteRequestServlet extends HttpServlet {
 		Request newRequest = null;
 		Event event = null;
 		
-		newRequest = mapper.readValue(request.getInputStream(), Request.class);
-		event = newRequest.getEvent();
-		
+		ID id = mapper.readValue(request.getInputStream(), ID.class);
 		
 		try 
 		{
+			newRequest = requestDAO.selectOne(id.getId());
+			event = newRequest.getEvent();
 			eventDAO.sendUpdate(event);
-			newRequest.setStatus("pending bc confirmation");
+			newRequest.setStatus("pending confirmation");
 			requestDAO.sendUpdate(newRequest);
 		} 
 		catch (SQLException e) 
