@@ -198,4 +198,14 @@
     <servlet-name>ApproveOrDenayServlet</servlet-name>
     <url-pattern>/api/approve-or-deny</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CompleteRequestServlet</display-name>
+    <servlet-name>CompleteRequestServlet</servlet-name>
+    <servlet-class>com.revature.servlet.CompleteRequestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CompleteRequestServlet</servlet-name>
+    <url-pattern>/api/complete-request</url-pattern>
+  </servlet-mapping>
 </web-app>
