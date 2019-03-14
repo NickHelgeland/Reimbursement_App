@@ -8,9 +8,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.database.EmployeeDAO;
+import com.revature.database.EventDAO;
 import com.revature.database.RequestDAO;
+import com.revature.model.Employee;
+import com.revature.model.Event;
+import com.revature.model.PartialRequest;
 import com.revature.model.Request;
 
 /**
@@ -40,14 +46,29 @@ public class CreateRequestServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		Request newRequest = null;
+		Request newRequest = new Request();
+		Event event = new Event();
 		RequestDAO requestDAO = new RequestDAO();
+		EventDAO eventDAO = new EventDAO();
+		EmployeeDAO employeeDAO = new EmployeeDAO();
 		ObjectMapper mapper = new ObjectMapper();
+		PartialRequest partialRequest = null;
+		HttpSession session = request.getSession();
 		
-		newRequest = mapper.readValue(request.getInputStream(), Request.class);
+		partialRequest = mapper.readValue(request.getInputStream(), PartialRequest.class);
+		
+		event.setEventDate(partialRequest.getStart_date());
+		event.setEventTime(partialRequest.getEnd_date());
+		event.setEventDescription(partialRequest.getDescription());
+		event.setEventLocation(partialRequest.getEvent_location());
+		event.setEventType(partialRequest.getEvent_type());
+		
+		newRequest.setAmount(partialRequest.getAmount());
+		newRequest.setJustification(partialRequest.getJustification());
 		
 		try 
 		{
+			Employee employee = employeeDAO.selectOne((int)session.getAttribute("employeeID"));
 			requestDAO.createNew(newRequest);
 		} 
 		catch (SQLException e) 

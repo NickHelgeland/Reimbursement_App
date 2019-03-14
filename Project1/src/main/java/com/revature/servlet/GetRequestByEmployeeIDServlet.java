@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,7 +37,27 @@ public class GetRequestByEmployeeIDServlet extends HttpServlet
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDAO requestDAO = new RequestDAO();
+		ObjectMapper mapper = new ObjectMapper();
+		ArrayList<Request> newRequest = null;
+		HttpSession session = request.getSession();
+		
+		try 
+		{
+			newRequest = requestDAO.selectByEmployeeId((int)session.getAttribute("employeeID"));
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+			newRequest = new ArrayList<Request>();
+		}
+		
+		PrintWriter out = response.getWriter();
+		String requestJSON = mapper.writeValueAsString(newRequest);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		out.print(requestJSON);
+		out.flush();
 	}
 
 	/**
