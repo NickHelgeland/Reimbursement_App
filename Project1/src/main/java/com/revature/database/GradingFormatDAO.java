@@ -78,9 +78,19 @@ public class GradingFormatDAO implements Insert<GradingFormat>, Select<GradingFo
 		
 		Statement statement = connection.createStatement();
 		
-		ResultSet resultSet = statement.executeQuery("SELECT * FROM GRADING_FORMAT ");
+		ResultSet resultSet = statement.executeQuery("SELECT * FROM GRADING_FORMAT WHERE "
+				+ "GRADING_SCALE=" + "'" + scale + "'");
 		
-		return null;
+		GradingFormat gradingScale = new GradingFormat();
+		
+		while(resultSet.next())
+		{
+			gradingScale.setGradingFormatId(resultSet.getInt(1));
+			gradingScale.setGradingScale(resultSet.getString(2));
+			gradingScale.setPassCondition(resultSet.getString(3));
+		}
+		
+		return gradingScale;
 	}
 
 }
