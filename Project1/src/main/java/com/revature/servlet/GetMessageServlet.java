@@ -3,30 +3,31 @@ package com.revature.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.database.EmployeeDAO;
-import com.revature.model.Employee;
+import com.revature.database.MessageDAO;
+import com.revature.model.Message;
 
 /**
- * Servlet implementation class TestServlet
+ * Servlet implementation class GetMessageServlet
  */
-public class TestServlet extends HttpServlet 
+public class GetMessageServlet extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TestServlet() 
+    public GetMessageServlet() 
     {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -34,26 +35,26 @@ public class TestServlet extends HttpServlet
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		EmployeeDAO dao = new EmployeeDAO();
 		ObjectMapper mapper = new ObjectMapper();
-		int employeeId = Integer.parseInt(mapper.readValue(request.getParameter("employeeId"), String.class));
-		System.out.println(employeeId);
-		System.out.println(request.getQueryString());
-		Employee fullEmployee = null;
+		ArrayList<Message> list = null;
+		MessageDAO messageDAO = new MessageDAO();
+		HttpSession session = request.getSession();
+		
 		try 
 		{
-			fullEmployee = dao.selectOne(employeeId);
+			list = messageDAO.selectByEmployeeId((int)session.getAttribute("employeeID"));
 		} 
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
+			list = new ArrayList<Message>();
 		}
+		
 		PrintWriter out = response.getWriter();
-		String employeeJSON;
-		employeeJSON = mapper.writeValueAsString(fullEmployee);
+		String messageJSON = mapper.writeValueAsString(list);
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		out.print(employeeJSON);
+		out.print(messageJSON);
 		out.flush();
 	}
 
@@ -62,8 +63,7 @@ public class TestServlet extends HttpServlet
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		ObjectMapper mapper = new ObjectMapper();
-//		TestClass tc = mapper.readValue(request.getInputStream(),  TestClass.class);
-//		System.out.println(tc.getKey1());
+		doGet(request, response);
 	}
+
 }

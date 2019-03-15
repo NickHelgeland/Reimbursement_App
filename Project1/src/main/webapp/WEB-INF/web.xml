@@ -218,4 +218,34 @@
     <servlet-name>GetBcInfo</servlet-name>
     <url-pattern>/api/get-bc-info</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetMessageServlet</display-name>
+    <servlet-name>GetMessageServlet</servlet-name>
+    <servlet-class>com.revature.servlet.GetMessageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetMessageServlet</servlet-name>
+    <url-pattern>/api/get-message</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateMessageServlet</display-name>
+    <servlet-name>CreateMessageServlet</servlet-name>
+    <servlet-class>com.revature.servlet.CreateMessageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateMessageServlet</servlet-name>
+    <url-pattern>/api/create-message</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteMessageServlet</display-name>
+    <servlet-name>DeleteMessageServlet</servlet-name>
+    <servlet-class>com.revature.servlet.DeleteMessageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteMessageServlet</servlet-name>
+    <url-pattern>/api/delete-message</url-pattern>
+  </servlet-mapping>
 </web-app>
