@@ -116,11 +116,7 @@ function table(data) {
 			"requestId": requestID
 		};
 		
-		console.log("test0");
 		createMessageServlet(data, (data, status) => {
-			console.log(data);
-			console.log(status);
-			console.log("test1");
 			
 			let denyData = {
 				"approved": false,
@@ -128,7 +124,6 @@ function table(data) {
 			};
 			
 			approveOrDenayServlet(denyData, (data, status) => {
-				console.log("test2");
 				let text = 'Request ' + requestID + ' was denied!';
 				
 				modal("Denied", text);
