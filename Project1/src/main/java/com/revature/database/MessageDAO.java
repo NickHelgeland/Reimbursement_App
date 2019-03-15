@@ -34,6 +34,8 @@ public class MessageDAO implements Insert<Message>, Select<Message>, Delete<Mess
 		statement.setInt(1, object.getTargetEmployeeId());
 		statement.setString(2, object.getMessage());
 		statement.setInt(3, object.getSender());
+		
+		statement.executeQuery();
 	}
 
 	@Override
