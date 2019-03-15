@@ -2,7 +2,21 @@ $(function() {
 	loggedInFunctions();	
 	displayEmployee();
 	updateTable();
+	displayMessages();
 });
+
+function displayMessages() {
+	getMessageServlet((data, status) => {
+		console.log(data);
+		if (data.length != 0) {
+			let msg = '';
+			$.each(data, function (i, item) {
+			    msg += '<h6>Message ' + (i + 1) + ': ' + item.message + '</h6>';
+			});
+			modal("Messages", msg);
+		}
+	});
+}
 
 function displayEmployee() {
 	getEmployee((data, status) => {

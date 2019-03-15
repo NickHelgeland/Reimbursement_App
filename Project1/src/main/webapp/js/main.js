@@ -8,6 +8,11 @@ function post(url, data, func) {
 }
 
 // api calls
+function getMessageServlet(func) {
+	url = '/Project1/api/get-message';	
+	get(url, func);
+}
+
 function createMessageServlet(data, func) {
 	url = '/Project1/api/create-message';	
 	post(url, data, func);
