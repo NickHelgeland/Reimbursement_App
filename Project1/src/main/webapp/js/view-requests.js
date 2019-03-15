@@ -102,17 +102,38 @@ function table(data) {
 	
 	$('.deny').click(function() {
 		let requestID = $(this).closest("tr").find(".requestID").text();
+
+		var msg = prompt("Please provide a reason for denying the request:");
+		
+		if (msg == null) {
+			return;
+		} else if (msg == "") {
+			msg = "No message."
+		}
 		
 		let data = {
-			"approved": false,
-			"id": requestID
+			"message": msg,
+			"requestId": requestID
 		};
 		
-		approveOrDenayServlet(data, (data, status) => {
-			let text = 'Request ' + requestID + ' was denied!';
+		console.log("test0");
+		createMessageServlet(data, (data, status) => {
+			console.log(data);
+			console.log(status);
+			console.log("test1");
 			
-			modal("Denied", text);
-			updateTable();
-		});
+			let denyData = {
+				"approved": false,
+				"id": requestID
+			};
+			
+			approveOrDenayServlet(denyData, (data, status) => {
+				console.log("test2");
+				let text = 'Request ' + requestID + ' was denied!';
+				
+				modal("Denied", text);
+				updateTable();
+			});
+		});		
 	});
 }
