@@ -8,9 +8,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.database.MessageDAO;
+import com.revature.database.RequestDAO;
+import com.revature.model.BasicMessage;
 import com.revature.model.Message;
 
 /**
@@ -43,11 +46,19 @@ public class CreateMessageServlet extends HttpServlet
 	{
 		ObjectMapper mapper = new ObjectMapper();
 		MessageDAO messageDAO = new MessageDAO();
+		RequestDAO requestDAO = new RequestDAO();
+		HttpSession session = request.getSession();
 		String status = "Failure!";
-		Message message = mapper.readValue(request.getInputStream(), Message.class);
+		BasicMessage basicMessage = mapper.readValue(request.getInputStream(), BasicMessage.class);
+		
+		Message message = new Message();
+		message.setMessage(basicMessage.getMessage());
 		
 		try 
 		{
+			message.setTargetEmployeeId(requestDAO.selectOne(basicMessage.getRequestId())
+					.getEmployee().getEmployeeId());
+			message.setSender((int)session.getAttribute("employeeID"));
 			messageDAO.createNew(message);
 			status = "Success!";
 		} 
