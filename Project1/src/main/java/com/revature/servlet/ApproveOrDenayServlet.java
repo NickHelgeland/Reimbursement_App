@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.database.EmployeeDAO;
 import com.revature.database.RequestDAO;
 import com.revature.model.ApproveOrDeny;
+import com.revature.model.Employee;
 import com.revature.model.Request;
 
 /**
@@ -57,26 +59,33 @@ public class ApproveOrDenayServlet extends HttpServlet
 			newRequest = requestDAO.selectOne(approveOrDeny.getId());
 			if(approveOrDeny.isApproved())
 			{
-				if(session.getAttribute("type").toString().equals("supervisor"))
+				if(newRequest.getEmployee().getRemainingBenefit() >= newRequest.getAmount())
 				{
-					newRequest.setStatus("pending head approval");
-				}
-				else if(session.getAttribute("type").toString().equals("head"))
-				{
-					newRequest.setStatus("pending final approval");	
-				}
-				else if(session.getAttribute("type").toString().equals("bc"))
-				{
-					if(newRequest.getStatus().equals("pending confirmation"))
+					if(session.getAttribute("type").toString().equals("supervisor"))
 					{
-						newRequest.setStatus("archived");
+						newRequest.setStatus("pending head approval");
 					}
-					else
+					else if(session.getAttribute("type").toString().equals("head"))
 					{
-						newRequest.setStatus("pending completion");
+						newRequest.setStatus("pending final approval");	
 					}
+					else if(session.getAttribute("type").toString().equals("bc"))
+					{
+						if(newRequest.getStatus().equals("pending confirmation"))
+						{
+							newRequest.setStatus("archived");
+						}
+						else
+						{
+							newRequest.setStatus("pending completion");
+						}
+					}
+					message = "approved!";
 				}
-				message = "approved!";
+				else
+				{
+					message = "Amount too large";
+				}
 			}
 			else
 			{

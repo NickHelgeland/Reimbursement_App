@@ -36,6 +36,7 @@ public class EmployeeDAO implements Select<Employee>
 			employee.setUsername(resultSet.getString(8));
 			employee.setSupervisorId(resultSet.getInt(9));
 			employee.setEmployeeType(resultSet.getString(10));
+			employee.setRemainingBenefit(resultSet.getDouble(11));
 		}
 		
 		return employee;
@@ -66,6 +67,7 @@ public class EmployeeDAO implements Select<Employee>
 			employee.setUsername(resultSet.getString(8));
 			employee.setSupervisorId(resultSet.getInt(9));
 			employee.setEmployeeType(resultSet.getString(10));
+			employee.setRemainingBenefit(resultSet.getDouble(11));
 			
 			list.add(employee);
 		}
@@ -115,6 +117,7 @@ public class EmployeeDAO implements Select<Employee>
 			employee.setUsername(resultSet.getString(8));
 			employee.setSupervisorId(resultSet.getInt(9));
 			employee.setEmployeeType(resultSet.getString(10));
+			employee.setRemainingBenefit(resultSet.getDouble(11));
 			
 			list.add(employee);
 			

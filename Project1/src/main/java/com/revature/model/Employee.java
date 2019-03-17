@@ -11,14 +11,16 @@ public class Employee {
 	private int zipCode;
 	private String username;
 	private int supervisorId;
-	private String employeeType;	
+	private String employeeType;
+	private double remainingBenefit;
 	
 	public Employee() {
 		super();
 	}
 	
 	public Employee(int employeeId, String firstName, String lastName, String streetAddress, String city,
-			String stateName, int zipCode, String username, int supervisorId, String employeeType) {
+			String stateName, int zipCode, String username, int supervisorId, String employeeType,
+			double remainingBenefit) {
 		super();
 		this.employeeId = employeeId;
 		this.firstName = firstName;
@@ -30,6 +32,7 @@ public class Employee {
 		this.username = username;
 		this.supervisorId = supervisorId;
 		this.employeeType = employeeType;
+		this.setRemainingBenefit(remainingBenefit);
 	}
 
 	public int getEmployeeId() {
@@ -110,5 +113,15 @@ public class Employee {
 
 	public void setEmployeeType(String employeeType) {
 		this.employeeType = employeeType;
+	}
+
+	public double getRemainingBenefit()
+	{
+		return remainingBenefit;
+	}
+
+	public void setRemainingBenefit(double remainingBenefit)
+	{
+		this.remainingBenefit = remainingBenefit;
 	}
 }

@@ -28,6 +28,7 @@ function displayEmployee() {
 		$('#stateName').html(data.stateName);
 		$('#supervisorId').html(data.supervisorId);
 		$('#employeeType').html(data.employeeType);
+		$('#remainingBenefit').html(data.remainingBenefit);
 	});
 }
 

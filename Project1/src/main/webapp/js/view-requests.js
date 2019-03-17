@@ -53,6 +53,7 @@ function table(data) {
 			text += '<h6>State: ' + data.stateName + '</h6>';
 			text += '<h6>Supervisor ID: ' + data.supervisorId + '</h6>';
 			text += '<h6 class="margBot0">Employee Type: ' + data.employeeType + '</h6>';
+			text += '<h6>Remaining Benefit: ' + data.remainingBenefit + '</h6>'
 			
 			modal("Employee Information", text);
 		});
@@ -93,10 +94,20 @@ function table(data) {
 		};
 		
 		approveOrDenayServlet(data, (data, status) => {
-			let text = 'Request ' + requestID + ' was approved!';
-			
-			modal("Approved", text);
-			updateTable();
+			if(data == 'approved!')
+				{
+					let text = 'Request ' + requestID + ' was approved!';
+					
+					modal("Approved", text);
+					updateTable();
+				}
+			else
+				{
+					let text = 'Request' + requestID + ' Exceeds employees remaining benefit.';
+					
+					modal("Error", text);
+					updateTable();
+				}
 		});
 	});
 	
