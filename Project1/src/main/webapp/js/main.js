@@ -13,6 +13,11 @@ function getMessageServlet(func) {
 	get(url, func);
 }
 
+function deleteMessageServlet(data, func) {
+	url = '/Project1/api/delete-message';
+	post(url, data, func);
+}
+
 function createMessageServlet(data, func) {
 	url = '/Project1/api/create-message';	
 	post(url, data, func);

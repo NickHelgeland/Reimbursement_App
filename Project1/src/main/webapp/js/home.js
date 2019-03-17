@@ -11,7 +11,11 @@ function displayMessages() {
 		if (data.length != 0) {
 			let msg = '';
 			$.each(data, function (i, item) {
-			    msg += '<h6>Message ' + (i + 1) + ': ' + item.message + '</h6>';
+			    msg += '<h6>Message ' + (i + 1) + ': One of your reimbursement requests'
+			    	+ ' was denied for the following reason: ' + item.message + '</h6>';
+			    deleteMessageServlet(item, (data, status) => {
+					console.log(data);
+				});
 			});
 			modal("Messages", msg);
 		}
