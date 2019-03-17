@@ -98,6 +98,12 @@ function getEmployeeType(func) {
 	get(url, func);
 }
 
+function updateEvent(data, func)
+{
+	url = '/Project1/api/update-event';
+	post(url, data, func);
+}
+
 // app wide functions
 function logOffBtn() {	
 	$('#logOffBtn').click(function() {

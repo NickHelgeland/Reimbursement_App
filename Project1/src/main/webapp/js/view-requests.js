@@ -52,8 +52,8 @@ function table(data) {
 			text += '<h6>City: ' + data.city + '</h6>';
 			text += '<h6>State: ' + data.stateName + '</h6>';
 			text += '<h6>Supervisor ID: ' + data.supervisorId + '</h6>';
-			text += '<h6 class="margBot0">Employee Type: ' + data.employeeType + '</h6>';
-			text += '<h6>Remaining Benefit: ' + data.remainingBenefit + '</h6>'
+			text += '<h6>Employee Type: ' + data.employeeType + '</h6>';
+			text += '<h6 class="margBot0">Remaining Benefit: ' + data.remainingBenefit + '</h6>'
 			
 			modal("Employee Information", text);
 		});
@@ -79,7 +79,8 @@ function table(data) {
 			
 			text += '<h6>Grading Format ID: ' + data.gradingFormat.gradingFormatId + '</h6>';
 			text += '<h6>Grading Scale: ' + data.gradingFormat.gradingScale + '</h6>';
-			text += '<h6 class="margBot0">Pass Condition: ' + data.gradingFormat.passCondition + '</h6>';
+			text += '<h6>Pass Condition: ' + data.gradingFormat.passCondition + '</h6>';
+			text += '<h6 class="margBot0">Grade: ' + data.grade + '</h6>';
 			
 			modal("Event Information", text);
 		});

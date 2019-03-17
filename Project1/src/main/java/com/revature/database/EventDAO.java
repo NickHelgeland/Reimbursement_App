@@ -37,6 +37,7 @@ public class EventDAO implements Insert<Event>, Update<Event>, Select<Event>
 			event.setEventLocation(resultSet.getString(6));
 			event.setEventDescription(resultSet.getString(7));
 			event.setEventStatus(resultSet.getString(8));
+			event.setGrade(resultSet.getString(9));
 		}
 		
 		return event;
@@ -65,6 +66,7 @@ public class EventDAO implements Insert<Event>, Update<Event>, Select<Event>
 			event.setEventLocation(resultSet.getString(6));
 			event.setEventDescription(resultSet.getString(7));
 			event.setEventStatus(resultSet.getString(8));
+			event.setGrade(resultSet.getString(9));
 			
 			eventList.add(event);
 		}
@@ -122,6 +124,11 @@ public class EventDAO implements Insert<Event>, Update<Event>, Select<Event>
 				update.executeQuery("UPDATE EVENTS SET EVENT_STATUS=" + "'" + object.getEventStatus() 
 				+ "' WHERE EVENTID=" + "'" + object.getEventId() + "'");
 			}
+			if(!object.getGrade().equals(resultSet.getString(9)))
+			{
+				update.executeQuery("UPDATE EVENTS SET GRADE=" + "'" + object.getGrade() 
+				+ "' WHERE EVENTID=" + "'" + object.getEventId() + "'");
+			}
 		}
 	}
 
@@ -131,7 +138,7 @@ public class EventDAO implements Insert<Event>, Update<Event>, Select<Event>
 		Connection connection = factory.getConnection();
 		
 		PreparedStatement statement = connection.prepareStatement("INSERT INTO EVENTS "
-				+ "VALUES(?,?,?,TO_DATE(?,'yyyy-mm-dd'),TO_DATE(?,'yyyy-mm-dd'),?,?,?)");
+				+ "VALUES(?,?,?,TO_DATE(?,'yyyy-mm-dd'),TO_DATE(?,'yyyy-mm-dd'),?,?,?,'waiting for grade')");
 		statement.setInt(1, object.getEventId());
 		statement.setString(2, object.getEventType());
 		statement.setInt(3, object.getGradingFormat().getGradingFormatId());

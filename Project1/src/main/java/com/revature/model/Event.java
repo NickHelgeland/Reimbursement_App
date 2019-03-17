@@ -9,13 +9,14 @@ public class Event {
 	private String eventLocation;
 	private String eventDescription;
 	private String eventStatus;
+	private String grade;
 	
 	public Event() {
 		super();
 	}
 
 	public Event(int eventId, String eventType, GradingFormat gradingFormat, String eventDate, String eventTime,
-			String eventLocation, String eventDescription, String eventStatus) {
+			String eventLocation, String eventDescription, String eventStatus, String grade) {
 		super();
 		this.eventId = eventId;
 		this.eventType = eventType;
@@ -25,6 +26,7 @@ public class Event {
 		this.eventLocation = eventLocation;
 		this.eventDescription = eventDescription;
 		this.eventStatus = eventStatus;
+		this.grade = grade;
 	}
 
 	public int getEventId() {
@@ -89,5 +91,15 @@ public class Event {
 
 	public void setEventStatus(String eventStatus) {
 		this.eventStatus = eventStatus;
+	}
+
+	public String getGrade()
+	{
+		return grade;
+	}
+
+	public void setGrade(String grade)
+	{
+		this.grade = grade;
 	}
 }

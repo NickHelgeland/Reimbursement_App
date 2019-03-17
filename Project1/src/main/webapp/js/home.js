@@ -79,7 +79,8 @@ function table(data) {
 			
 			text += '<h6>Grading Format ID: ' + data.gradingFormat.gradingFormatId + '</h6>';
 			text += '<h6>Grading Scale: ' + data.gradingFormat.gradingScale + '</h6>';
-			text += '<h6 class="margBot0">Pass Condition: ' + data.gradingFormat.passCondition + '</h6>';
+			text += '<h6>Pass Condition: ' + data.gradingFormat.passCondition + '</h6>';
+			text += '<h6 class="margBot0">Grade: ' + data.grade + '</h6>';
 			
 			modal("Event Information", text);
 		});
@@ -90,6 +91,26 @@ function table(data) {
 		let status = $(this).closest("tr").find(".status").text();
 		
 		if (status == "pending completion") {
+			var msg = prompt("Please provide your grade for this course or the status of your presentation.");
+			
+			if (msg == null) {
+				return;
+			} else if (msg == "") {
+				msg = "No message."
+			}
+			
+			let requestID = $(this).closest("tr").find(".requestID").text();
+			let id = {
+					"id": requestID
+				};
+			getEventServlet(id, (data, status) => {
+				data.grade = msg;
+				
+				updateEvent(data, (data, status) => {
+					console.log(data);
+				});
+			});
+			
 			let data = {
 				"id": requestID
 			};
