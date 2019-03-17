@@ -69,7 +69,7 @@ public class CreateRequestServlet extends HttpServlet {
 		
 		newRequest.setAmount(partialRequest.getAmount());
 		newRequest.setJustification(partialRequest.getJustification());
-		newRequest.setStatus("pending supervisor approval");
+		newRequest.setStatus(this.determineStatus(session.getAttribute("type").toString()));
 		
 		try 
 		{
@@ -77,6 +77,8 @@ public class CreateRequestServlet extends HttpServlet {
 			event.setGradingFormat(format);
 			event.setEventId(eventDAO.getNewID());
 			Employee employee = employeeDAO.selectOne((int)session.getAttribute("employeeID"));
+			employee.setRemainingBenefit(employee.getRemainingBenefit() - newRequest.getAmount());
+			employeeDAO.sendUpdate(employee);
 			newRequest.setEmployee(employee);
 			newRequest.setEvent(event);
 			eventDAO.createNew(event);
@@ -94,6 +96,32 @@ public class CreateRequestServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		out.print(messageJSON);
 		out.flush();
+	}
+	
+	private String determineStatus(String type)
+	{
+		String status = "";
+		
+		switch (type)
+		{
+		case "employee" : 
+			status = "pending supervisor approval";
+			break;
+			
+		case "supervisor" : 
+			status = "pending head approval";
+			break;
+			
+		case "head" : 
+			status = "pending final approval";
+			break;
+			
+		case "bc" : 
+			status = "pending final approval";
+			break;
+		}
+		
+		return status;
 	}
 
 }

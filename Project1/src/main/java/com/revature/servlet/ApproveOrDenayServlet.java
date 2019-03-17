@@ -47,6 +47,7 @@ public class ApproveOrDenayServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		RequestDAO requestDAO = new RequestDAO();
+		EmployeeDAO employeeDAO = new EmployeeDAO();
 		ObjectMapper mapper = new ObjectMapper();
 		HttpSession session = request.getSession();
 		Request newRequest = null;
@@ -90,6 +91,10 @@ public class ApproveOrDenayServlet extends HttpServlet
 			else
 			{
 				newRequest.setStatus("denied");
+				
+				newRequest.getEmployee().setRemainingBenefit(newRequest.getEmployee().getRemainingBenefit() 
+						+ newRequest.getAmount());
+				employeeDAO.sendUpdate(newRequest.getEmployee());
 				
 				message = "denied!";
 			}

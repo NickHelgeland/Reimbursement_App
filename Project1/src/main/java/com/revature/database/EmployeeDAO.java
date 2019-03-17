@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import com.revature.model.Employee;
 
-public class EmployeeDAO implements Select<Employee>
+public class EmployeeDAO implements Select<Employee>, Update<Employee>
 {
 	ConnectionFactory connectionFactory = ConnectionFactory.getInstance();
 	
@@ -128,5 +128,28 @@ public class EmployeeDAO implements Select<Employee>
 		}
 		
 		return list;
+	}
+
+	@Override
+	public void sendUpdate(Employee object) throws SQLException
+	{
+		Connection connection  = connectionFactory.getConnection();
+		
+		Statement statement = connection.createStatement();
+		
+		ResultSet resultSet = statement.executeQuery("SELECT * FROM EMPLOYEE WHERE EMPLOYEEID=" 
+				+ "'" + object.getEmployeeId() + "'");
+		
+		while(resultSet.next())
+		{
+			Statement update = connection.createStatement();
+			
+			if(object.getRemainingBenefit() != resultSet.getDouble(11))
+			{
+				update.executeQuery("UPDATE EMPLOYEE SET REMAINING_BENEFIT=" + "'" 
+						+ object.getRemainingBenefit() + "' WHERE EMPLOYEEID='" + object.getEmployeeId() 
+						+ "'");
+			}
+		}
 	}
 }
