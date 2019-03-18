@@ -35,6 +35,19 @@ function requestForm() {
 	}
 	
 	createRequestServlet(data, (data, status) => {
-		modal("Success", data);
+		if(data == 'Request created!')
+		{
+			let text = 'Request created successfully.';
+			
+			modal("Confirmation", text);
+			updateTable();
+		}
+		else
+		{
+			let text = 'The requested cost is higher than your remaining benefit.';
+			
+			modal("Error", text);
+			updateTable();
+		}
 	});
 }

@@ -71,24 +71,35 @@ public class CreateRequestServlet extends HttpServlet {
 		newRequest.setJustification(partialRequest.getJustification());
 		newRequest.setStatus(this.determineStatus(session.getAttribute("type").toString()));
 		
+		String message = "";
+		
 		try 
 		{
+			Employee employee = employeeDAO.selectOne((int)session.getAttribute("employeeID"));
 			GradingFormat format = gradingDAO.selectByScale(partialRequest.getGrading_scale());
 			event.setGradingFormat(format);
 			event.setEventId(eventDAO.getNewID());
-			Employee employee = employeeDAO.selectOne((int)session.getAttribute("employeeID"));
-			employee.setRemainingBenefit(employee.getRemainingBenefit() - newRequest.getAmount());
-			employeeDAO.sendUpdate(employee);
 			newRequest.setEmployee(employee);
 			newRequest.setEvent(event);
-			eventDAO.createNew(event);
-			requestDAO.createNew(newRequest);
+			if(newRequest.getEmployee().getRemainingBenefit() >= newRequest.getAmount())
+			{
+				employee.setRemainingBenefit(employee.getRemainingBenefit() - newRequest.getAmount());
+				employeeDAO.sendUpdate(employee);
+				eventDAO.createNew(event);
+				requestDAO.createNew(newRequest);
+				message = "Request created!";
+			}
+			else
+			{
+				message = "not enough money";
+			}
+			
 		} 
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
 		}
-		String message = "Request created!";
+		
 		
 		PrintWriter out = response.getWriter();
 		String messageJSON = mapper.writeValueAsString(message);

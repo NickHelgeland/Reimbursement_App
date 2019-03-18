@@ -95,20 +95,10 @@ function table(data) {
 		};
 		
 		approveOrDenayServlet(data, (data, status) => {
-			if(data == 'approved!')
-				{
-					let text = 'Request ' + requestID + ' was approved!';
-					
-					modal("Approved", text);
-					updateTable();
-				}
-			else
-				{
-					let text = 'Request' + requestID + ' Exceeds employees remaining benefit.';
-					
-					modal("Error", text);
-					updateTable();
-				}
+				let text = 'Request ' + requestID + ' was approved!';
+				
+				modal("Approved", text);
+				updateTable();
 		});
 	});
 	

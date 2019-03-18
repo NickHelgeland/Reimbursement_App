@@ -60,8 +60,6 @@ public class ApproveOrDenayServlet extends HttpServlet
 			newRequest = requestDAO.selectOne(approveOrDeny.getId());
 			if(approveOrDeny.isApproved())
 			{
-				if(newRequest.getEmployee().getRemainingBenefit() >= newRequest.getAmount())
-				{
 					if(session.getAttribute("type").toString().equals("supervisor"))
 					{
 						newRequest.setStatus("pending head approval");
@@ -82,11 +80,6 @@ public class ApproveOrDenayServlet extends HttpServlet
 						}
 					}
 					message = "approved!";
-				}
-				else
-				{
-					message = "Amount too large";
-				}
 			}
 			else
 			{
